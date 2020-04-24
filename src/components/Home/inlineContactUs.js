@@ -7,6 +7,10 @@ import CallIcon from '@material-ui/icons/Call';
 
 import { makeStyles } from '@material-ui/core/styles';
 
+const linkStyle = {
+    textDecoration: 'none'
+  }
+
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -24,24 +28,18 @@ export const InlineContactUs = () => {
 
     return (
         <div className={classes.root}>
-            <Grid 
-                    container
-                    justify="center"
-                    alignItems="center"
-                >
-                <Grid item xs={8} align="center">
-                    <Link to={ROUTES.CONTACTUS} underline='none'>
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            size="large"
-                            className={classes.button}
-                            startIcon={<CallIcon />}
-                        >
-                            Contact Us
-                        </Button>
-                    </Link>
-                </Grid>
+            <Grid container justify="center" alignItems="center">
+                <Link to={ROUTES.CONTACTUS}  style={linkStyle}>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        size="large"
+                        className={classes.button}
+                        startIcon={<CallIcon />}
+                    >
+                        Contact Us
+                    </Button>
+                </Link>
             </Grid>
         </div>
     );

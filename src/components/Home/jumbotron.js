@@ -1,7 +1,8 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-// import Grid from '@material-ui/core/Grid';
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+import Grid from '@material-ui/core/Grid';
 // import Button from '@material-ui/core/Button';
 
 const divStyle = {
@@ -19,6 +20,9 @@ export const Jumbotron = () => (
         To do so, they must be judicious about which activities truly add value and embrace their 
         roles in leading the improvement in both performance and organizational health" - The role of the CEO, Mckinsey & Company,  2017.
         </Typography>
+        <Grid container justify="center" alignItems="center">
+          <ArrowDownwardIcon/> 
+        </Grid>
       </Container>
     </div>
 );

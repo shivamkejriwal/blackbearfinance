@@ -7,6 +7,12 @@ import Card from '@material-ui/core/Card';
 // import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
+
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+// import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+
 import { makeStyles } from '@material-ui/core/styles';
 
 const divStyle = {
@@ -49,19 +55,38 @@ const useStyles = makeStyles((theme) => ({
 const cards = [
     {
         heading: 'Bookkeeping',
-        text: 'Month end close, Bank reconciliation, Account reconciliation, Project cost accounting',
+        // text: 'Month end close, Bank reconciliation, Account reconciliation, Project cost accounting',
+        list: [
+          'Month End Close',
+          'Bank Reconciliation',
+          'Account Reconciliation',
+          'Project Cost Accounting'
+        ],
         imageUrl: 'https://source.unsplash.com/random',
         imageTitle: 'Image title'
     },
     {
         heading: 'Accounting Services',
-        text: 'Accounting setup & training, Historical cleanup, Depreciation & amotization, Inventory control',
+        // text: 'Accounting setup & training, Historical cleanup, Depreciation & amotization, Inventory control',
+        list: [
+          'Accounting Setup & Training',
+          'Historical Cleanup',
+          'Depreciation & Amotization',
+          'Inventory Control'
+        ],
         imageUrl: 'https://source.unsplash.com/random',
         imageTitle: 'Image title'
     },
     {
         heading: 'CFO Services',
-        text: 'To provide virtual bookkeeping and  CFO solution to small business who lack the means to problems solve issues of financial nature.',
+        // text: 'To provide virtual bookkeeping and  CFO solution to small business who lack the means to problems solve issues of financial nature.',
+        list: [
+          'Finance Statement Review',
+          'Price Analysis',
+          'Budget vs Actual',
+          'Debt Planning',
+          'Forecasting'
+        ],
         imageUrl: 'https://source.unsplash.com/random',
         imageTitle: 'Image title'
     }
@@ -72,25 +97,29 @@ export const Highlight = () => {
         <div style={divStyle}>
             <Container className={classes.cardGrid} maxWidth='md'>
                 {/* End hero unit */}
-                <Grid container spacing={4}>
+                <Grid container spacing={8}>
                     {cards.map((card) => (
-                    <Grid item key={card} xs={12} sm={6} md={4}>
+                      <Grid item key={card} xs={12} sm={6} md={4}>
                         <Card className={classes.card}>
-                            <CardMedia
-                                className={classes.cardMedia}
-                                image={card.imageUrl}
-                                title={card.imageTitle}
-                            />
-                            <CardContent className={classes.cardContent}>
-                                <Typography gutterBottom variant='h5' component='h2'>
-                                {card.heading}
-                                </Typography>
-                                <Typography>
-                                {card.text}
-                                </Typography>
-                            </CardContent>
+                          <CardMedia
+                            className={classes.cardMedia}
+                            image={card.imageUrl}
+                            title={card.imageTitle}
+                          />
+                          <CardContent className={classes.cardContent}>
+                            <Typography gutterBottom variant='h5' component='h2'>
+                            {card.heading}
+                            </Typography>
+                            <List>
+                              {card.list.map(item =>(
+                                <ListItem>
+                                  <ListItemText primary={item}/>
+                                </ListItem>
+                              ))}
+                            </List>
+                          </CardContent>
                         </Card>
-                    </Grid>
+                      </Grid>
                     ))}
                 </Grid>
             </Container>
