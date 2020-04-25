@@ -1,4 +1,4 @@
-import Firebase from '../components//Firebase//firebase'
+import Firebase from '../components/Firebase/firebase'
 
 export const Logger = () => {
     const firebase = Firebase.instance || new Firebase();
