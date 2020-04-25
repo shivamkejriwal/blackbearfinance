@@ -2,6 +2,7 @@ import app from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
 import 'firebase/firestore';
+import 'firebase/analytics';
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -10,19 +11,19 @@ const config = {
   projectId: process.env.REACT_APP_PROJECT_ID,
   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
-  // measurementId: process.env.REACT_APP_appId,
-  // measurementId: process.env.REACT_APP_measurementId
+  appId: process.env.REACT_APP_appId,
+  measurementId: process.env.REACT_APP_measurementId
 };
 class Firebase {
   constructor() {
     // console.log('[sk]config', config);
     app.initializeApp(config);
-
+    app.analytics();
     /* Firebase APIs */
     this.auth = app.auth();
     this.db = app.database();
-    this.firestore = app.firestore()
-
+    this.firestore = app.firestore();
+    this.analytics = app.analytics();
     /* Social Sign In Method Provider */
 
     this.googleProvider = new app.auth.GoogleAuthProvider();
@@ -56,22 +57,22 @@ class Firebase {
     users = () => this.db.ref('users');
 
     // *** Articles API ***
-    getArticles = (limit = 3) => this.firestore
-                  .collection('Articles')
-                  .orderBy('date','desc')
-                  .limit(limit);
-    getArticlesByCategory = (category, limit = 3) => this.firestore
-                  .collection('Articles')
-                  .where('category', '==', category)
-                  .orderBy('date','desc')
-                  .limit(limit);
-    // *** Market API ***
-    getMarketData = (key) => this.firestore
-                  .collection('Companies')
-                  .where(key, '==', true);
-    getAdvancersDecliners = (key) => this.firestore
-                  .collection('Market-Data').doc('Advancers-Decliners');
-    getSectors = (key) => this.firestore.collection('Sector');
-    getIndustries = (key) => this.firestore.collection('Industry');
+    // getArticles = (limit = 3) => this.firestore
+    //               .collection('Articles')
+    //               .orderBy('date','desc')
+    //               .limit(limit);
+    // getArticlesByCategory = (category, limit = 3) => this.firestore
+    //               .collection('Articles')
+    //               .where('category', '==', category)
+    //               .orderBy('date','desc')
+    //               .limit(limit);
+    // // *** Market API ***
+    // getMarketData = (key) => this.firestore
+    //               .collection('Companies')
+    //               .where(key, '==', true);
+    // getAdvancersDecliners = (key) => this.firestore
+    //               .collection('Market-Data').doc('Advancers-Decliners');
+    // getSectors = (key) => this.firestore.collection('Sector');
+    // getIndustries = (key) => this.firestore.collection('Industry');
 }
 export default Firebase;

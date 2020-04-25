@@ -4,8 +4,11 @@ import { Jumbotron } from './jumbotron';
 import { Highlight } from './highlight'
 import { InlineContent } from './inlineContent';
 import { InlineContactUs } from './inlineContactUs';
+import { withFirebase } from '../Firebase';
 
-const HomePage = () => (
+const HomePage = ({ firebase }) => {
+  firebase.analytics.logEvent('PageInit-HomePage')
+  return (
   <div>
     <Jumbotron/>
     <Highlight/>
@@ -13,8 +16,9 @@ const HomePage = () => (
     <InlineContactUs/>
     <StickyFooter/>
   </div>
-);
-export default HomePage;
+)};
+// export default HomePage;
+export default withFirebase(HomePage);
 // import { withAuthorization } from '../Authentication/Session';
 // const condition = authUser => !!authUser;
 // export default withAuthorization(condition)(HomePage);
