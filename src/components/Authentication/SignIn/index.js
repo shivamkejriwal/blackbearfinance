@@ -24,12 +24,12 @@ const SignInPage = () => (
           </ListItemIcon>
           <SignInGoogle />
         </ListItem>
-        <ListItem button>
+        {/* <ListItem button>
           <ListItemIcon>
             <FacebookIcon />
           </ListItemIcon>
           <SignInFacebook />
-        </ListItem>
+        </ListItem> */}
       </List>
     </Container>
     <Divider />
