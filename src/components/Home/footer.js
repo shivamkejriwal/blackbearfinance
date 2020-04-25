@@ -9,6 +9,11 @@ import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import HomeIcon from '@material-ui/icons/Home';
+import ContactsIcon from '@material-ui/icons/Contacts';
+import BusinessIcon from '@material-ui/icons/Business';
+
 import * as ROUTES from '../../constants/routes';
 
 const useStyles = makeStyles((theme) => ({
@@ -53,20 +58,29 @@ const Copyright = () => {
 
 const MiniNavigation = () => {
   return (
-    <Grid item lg={2} xs={10} justify='center'>
+    <Grid item lg={3} xs={10} justify='center'>
       <List>
         <Link to={ROUTES.HOME} style={linkStyle}>
             <ListItem button>
+                <ListItemIcon>
+                  <HomeIcon />
+                </ListItemIcon>
                 <ListItemText primary="Home" />
             </ListItem>
         </Link>
         <Link to={ROUTES.CONTACTUS} style={linkStyle}>
             <ListItem button>
+                <ListItemIcon>
+                  <ContactsIcon />
+                </ListItemIcon>
                 <ListItemText primary="Contact Us" />
             </ListItem>
         </Link>
         <Link to={ROUTES.SERVICES} style={linkStyle}>
             <ListItem button>
+                <ListItemIcon>
+                  <BusinessIcon />
+                </ListItemIcon>
                 <ListItemText primary="Services" />
             </ListItem>
         </Link>

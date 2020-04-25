@@ -62,7 +62,7 @@ const cards = [
           'Account Reconciliation',
           'Project Cost Accounting'
         ],
-        imageUrl: 'https://source.unsplash.com/random',
+        imageUrl: '/images/white-graphing-paper-164686.jpg',
         imageTitle: 'Image title'
     },
     {
@@ -74,7 +74,7 @@ const cards = [
           'Depreciation & Amotization',
           'Inventory Control'
         ],
-        imageUrl: 'https://source.unsplash.com/random',
+        imageUrl: '/images/black-calculator-near-ballpoint-pen-on-white-printed-paper-53621.jpg',
         imageTitle: 'Image title'
     },
     {
@@ -87,7 +87,7 @@ const cards = [
           'Debt Planning',
           'Forecasting'
         ],
-        imageUrl: 'https://source.unsplash.com/random',
+        imageUrl: '/images/administration-agreement-banking-blur-618158.jpg',
         imageTitle: 'Image title'
     }
 ];

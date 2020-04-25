@@ -11,6 +11,17 @@ const divStyle = {
     padding: '20px 0',
 };
 
+const imageStyle = {
+    width: '100%',
+    height: '100%',
+    marginTop: '5px',
+    padding: '0 5px'
+}
+
+const boldStyle = {
+    fontWeight: 'bold'
+}
+
 const useStyles = makeStyles((theme) => ({
     cardGrid: {
         paddingTop: theme.spacing(5),
@@ -18,10 +29,6 @@ const useStyles = makeStyles((theme) => ({
     },
     paper: {
         // backgroundColor: theme.palette.background.paper
-    },
-    image: {
-        width: '100%',
-        height: '100%'
     }
 }));
 
@@ -45,7 +52,7 @@ export const InlineContent = () => {
                     <Grid item xs={12} sm={6}>
                         <Paper className={classes.paper} elevation={1}>
                             {/* xs=12 sm=6 */}
-                            <img src="https://picsum.photos/400/220" alt="Smiley face" height="100%" width="100%"></img>
+                            <img src="/images/photo-of-person-holding-mobile-phone-3183153.jpg" alt="Smiley face" style={imageStyle}></img>
                         </Paper>
                     </Grid>
                 </Grid>
@@ -54,7 +61,7 @@ export const InlineContent = () => {
                     <Grid item xs={12} sm={6}>
                         <Paper className={classes.paper} elevation={1}>
                             {/* xs=12 sm=6 */}
-                            <img src="https://picsum.photos/400/550" alt="Smiley face" height="100%" width="100%"></img>
+                            <img src="/images/photo-of-people-doing-handshakes-3183172.jpg" alt="Smiley face" style={imageStyle}></img>
                         </Paper>
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -67,27 +74,27 @@ export const InlineContent = () => {
                                 </ListItem>
                                 <ListItem>
                                     <Typography component='body1' variant='body1' color='textPrimary' gutterBottom>
-                                        Experienced: We are highly motivated group of financial experts that have industry experience including retail, manufacturing, construction etc.
+                                        <span style={boldStyle}>Experienced:</span> We are highly motivated group of financial experts that have industry experience including retail, manufacturing, construction etc.
                                     </Typography>
                                 </ListItem>
                                 <ListItem>
                                     <Typography component='body1' variant='body1' color='textPrimary' gutterBottom>
-                                        Cost effective: hiring a CFO/Controller can cost more than $100K. We  provide customized finance solutions at a fraction of the cost.
+                                        <span style={boldStyle}>Cost effective:</span> Hiring a CFO/Controller can cost more than $100K. We  provide customized finance solutions at a fraction of the cost.
                                     </Typography>
                                 </ListItem>
                                 <ListItem>
                                     <Typography component='body1' variant='body1' color='textPrimary' gutterBottom>
-                                        Transparency: we pride our self in brutal honesty and transparency. Think of our service as a tool, to provide necessary information about your business so that it can achieve its short and long term goals. 
+                                        <span style={boldStyle}>Transparency:</span> We pride our self in brutal honesty and transparency. Think of our service as a tool, to provide necessary information about your business so that it can achieve its short and long term goals. 
                                     </Typography>
                                 </ListItem>
                                 <ListItem>
                                     <Typography component='body1' variant='body1' color='textPrimary' gutterBottom>
-                                        Faster Results: we provide results accurately and in a timely manner. We view our services as an investment and not a cost. We intend to educate on basic business operations along with providing financials solutions. 
+                                        <span style={boldStyle}>Faster Results:</span> We provide results accurately and in a timely manner. We view our services as an investment and not a cost. We intend to educate on basic business operations along with providing financials solutions. 
                                     </Typography>
                                 </ListItem>
                                 <ListItem>
                                     <Typography component='body1' variant='body1' color='textPrimary' gutterBottom>
-                                        Personal: we did not believe in one size fits all concept. All our solutions will be personally crafted to fit your business. Our virtual platform enables you to have face to face conversation regardless of where you are located. 
+                                        <span style={boldStyle}>Personal:</span> We did not believe in one size fits all concept. All our solutions will be personally crafted to fit your business. Our virtual platform enables you to have face to face conversation regardless of where you are located. 
                                     </Typography>
                                 </ListItem>
                             </List>

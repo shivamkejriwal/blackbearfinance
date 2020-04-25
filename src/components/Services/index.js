@@ -13,6 +13,8 @@ import BusinessIcon from '@material-ui/icons/Business';
 import AssessmentIcon from '@material-ui/icons/Assessment';
 import AutorenewIcon from '@material-ui/icons/Autorenew';
 
+import { StickyFooter } from '../Home/footer';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -67,6 +69,7 @@ const ServicesPage = () => {
           <ListItemText primary="Provide strategy to meet liquidity and debt issues: we understand that some times businesses take unwanted debt to meet cashflow constraints. Out team of financial engineer can you get out that situation just a little quicker, by using short term and long term strategies focused on growth." />
         </ListItem>
       </List>
+      <StickyFooter/>
   </div>
 )};
 export default ServicesPage;
