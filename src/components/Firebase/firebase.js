@@ -17,7 +17,6 @@ const config = {
 };
 class Firebase {
   constructor() {
-    // console.log('[sk]config', config);
     app.initializeApp(config);
     app.analytics();
     /* Firebase APIs */
@@ -31,6 +30,7 @@ class Firebase {
     this.googleProvider = new app.auth.GoogleAuthProvider();
     this.facebookProvider = new app.auth.FacebookAuthProvider();
     this.twitterProvider = new app.auth.TwitterAuthProvider();
+    Firebase.instance = this;
   }
     // *** Auth API ***
     doCreateUserWithEmailAndPassword = (email, password) =>
@@ -77,4 +77,5 @@ class Firebase {
     // getSectors = (key) => this.firestore.collection('Sector');
     // getIndustries = (key) => this.firestore.collection('Industry');
 }
+
 export default Firebase;

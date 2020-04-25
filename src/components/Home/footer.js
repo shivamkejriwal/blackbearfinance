@@ -58,7 +58,7 @@ const Copyright = () => {
 
 const MiniNavigation = () => {
   return (
-    <Grid item lg={3} xs={10} justify='center'>
+    <Grid container item lg={3} xs={10} justify='center'>
       <List>
         <Link to={ROUTES.HOME} style={linkStyle}>
             <ListItem button>
@@ -92,7 +92,7 @@ const MiniNavigation = () => {
 const ContactDetails = () => {
   const classes = useStyles();
   return (
-    <Grid item lg={3} xs={10} className={classes.ContactDetails} justify='center'>
+    <Grid container item lg={3} xs={10} className={classes.ContactDetails} justify='center'>
       <List>
         <ListItem>
           <Typography variant='h6'>Black Bear Finance</Typography>

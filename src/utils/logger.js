@@ -1,7 +1,8 @@
-import { withFirebase } from '../Firebase';
+import Firebase from '../components//Firebase//firebase'
 
-const Logger = ({ firebase }) => {
-    const log = ({event, payload}) => {
+export const Logger = () => {
+    const firebase = Firebase.instance || new Firebase();
+    const log = (event, payload) => {
         firebase.analytics.logEvent(event, payload);
         console.log(`console-${event}`, payload);
     };
@@ -10,5 +11,3 @@ const Logger = ({ firebase }) => {
         log
     };
 };
-
-export default withFirebase(Logger);
