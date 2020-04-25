@@ -7,7 +7,8 @@ import { InlineContactUs } from './inlineContactUs';
 import { withFirebase } from '../Firebase';
 
 const HomePage = ({ firebase }) => {
-  firebase.analytics.logEvent('PageInit-HomePage')
+  firebase.analytics.logEvent('PageInit-HomePage');
+  console.log('console-PageInit-HomePage');
   return (
   <div>
     <Jumbotron/>
