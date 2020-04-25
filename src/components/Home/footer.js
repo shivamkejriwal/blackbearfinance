@@ -93,15 +93,30 @@ const ContactDetails = () => {
   const classes = useStyles();
   return (
     <Grid item lg={3} xs={10} className={classes.ContactDetails} justify='center'>
-        <Typography variant='h6'>Black Bear Finance</Typography>
-        <Typography variant='body1'>
-          <PhoneIcon fontSize="small"/> 
-            217-111-2223
-        </Typography>
-        <Typography variant='body1'>
-          <EmailIcon fontSize="small"/> 
-          email@info.com
-        </Typography>
+      <List>
+        <ListItem>
+          <Typography variant='h6'>Black Bear Finance</Typography>
+        </ListItem>
+        <ListItem>
+          <ListItemIcon>
+            <PhoneIcon />
+          </ListItemIcon>
+          <Typography variant='body1'>
+              217-111-2223
+          </Typography>
+        </ListItem>
+        <ListItem>
+          <ListItemIcon>
+            <EmailIcon />
+          </ListItemIcon>
+          <Typography variant='body1'>
+            email@info.com
+          </Typography>
+        </ListItem>
+      </List>
+        
+        
+        
     </Grid>
   );
 };
