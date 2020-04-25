@@ -15,6 +15,14 @@ import AutorenewIcon from '@material-ui/icons/Autorenew';
 
 import { StickyFooter } from '../Home/footer';
 
+const divStyle = {
+  padding: '20px 0',
+};
+
+const boldStyle = {
+  fontWeight: 'bold'
+}
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -27,49 +35,61 @@ const ServicesPage = () => {
   const classes = useStyles();
   
   return (
-  <div>
-    <Typography component='h1' variant='h6' align='left' color='textPrimary' gutterBottom>
+  <div style={divStyle}>
+    <Typography component='h1' variant='h6' align='center' color='textPrimary' gutterBottom>
     Services we Offer?
     </Typography>
     <List component="nav" aria-label="main mailbox folders">
-        <ListItem button>
-          <ListItemIcon>
-            <AssessmentIcon />
-          </ListItemIcon>
-          <ListItemText primary="Long Term and short term forecasting: To make right decision for your business it is important to know where you’re going. We can help your business estimate potential revenue from recognized revenue stream. " />
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <AccountBalanceIcon />
-          </ListItemIcon>
-          <ListItemText primary="Budgeting and estimation: our dynamic estimation model can predict cost associated with revenue stream and help you plan. We closely monitor actual vs estimated costs and  prepare financial instruments to budget for the difference. " />
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <AccountBalanceWalletIcon />
-          </ListItemIcon>
-          <ListItemText primary="Historical clean up of accounting data: accurately recording accounting data is essential to raise, by means of loan or equity investment. It also provides the means to better understand your business and make decisions to increase its value. " />
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <AutorenewIcon />
-          </ListItemIcon>
-          <ListItemText primary="Cash flow issues: many small business have cash flow constraints. Most of the time this is not due to the nature of business but  inconsistencies in workflow and operations. We can recognize these operational issues and prepare your business for the growth it deserves." />
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <BusinessIcon />
-          </ListItemIcon>
-          <ListItemText primary="Maximize profitability by providing stability to business operation: if you can predict all the cost associated with your business, you can increase your margins by making the right decisions at the right time. We can provide the means to stabilize your business to a more predictable model."/>
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <LocalAtmIcon />
-          </ListItemIcon>
-          <ListItemText primary="Provide strategy to meet liquidity and debt issues: we understand that some times businesses take unwanted debt to meet cashflow constraints. Out team of financial engineer can you get out that situation just a little quicker, by using short term and long term strategies focused on growth." />
-        </ListItem>
-      </List>
-      <StickyFooter/>
+      <ListItem button>
+        <ListItemIcon>
+          <AssessmentIcon />
+        </ListItemIcon>
+        <Typography component='body1' variant='body1' color='textPrimary' gutterBottom>
+          <span style={boldStyle}>Long Term and short term forecasting:</span> To make right decision for your business it is important to know where you’re going. We can help your business estimate potential revenue from recognized revenue stream.
+        </Typography>
+      </ListItem>
+      <ListItem button>
+        <ListItemIcon>
+          <AccountBalanceIcon />
+        </ListItemIcon>
+        <Typography component='body1' variant='body1' color='textPrimary' gutterBottom>
+          <span style={boldStyle}>Budgeting and estimation:</span> our dynamic estimation model can predict cost associated with revenue stream and help you plan. We closely monitor actual vs estimated costs and  prepare financial instruments to budget for the difference. 
+        </Typography>
+      </ListItem>
+      <ListItem button>
+        <ListItemIcon>
+          <AccountBalanceWalletIcon />
+        </ListItemIcon>
+        <Typography component='body1' variant='body1' color='textPrimary' gutterBottom>
+          <span style={boldStyle}>Historical clean up of accounting data:</span> accurately recording accounting data is essential to raise, by means of loan or equity investment. It also provides the means to better understand your business and make decisions to increase its value. 
+        </Typography>
+      </ListItem>
+      <ListItem button>
+        <ListItemIcon>
+          <AutorenewIcon />
+        </ListItemIcon>
+        <Typography component='body1' variant='body1' color='textPrimary' gutterBottom>
+          <span style={boldStyle}>Cash flow issues:</span> many small business have cash flow constraints. Most of the time this is not due to the nature of business but  inconsistencies in workflow and operations. We can recognize these operational issues and prepare your business for the growth it deserves.
+        </Typography>
+      </ListItem>
+      <ListItem button>
+        <ListItemIcon>
+          <BusinessIcon />
+        </ListItemIcon>
+        <Typography component='body1' variant='body1' color='textPrimary' gutterBottom>
+          <span style={boldStyle}>Maximize profitability by providing stability to business operation:</span> if you can predict all the cost associated with your business, you can increase your margins by making the right decisions at the right time. We can provide the means to stabilize your business to a more predictable model.
+        </Typography>
+      </ListItem>
+      <ListItem button>
+        <ListItemIcon>
+          <LocalAtmIcon />
+        </ListItemIcon>
+        <Typography component='body1' variant='body1' color='textPrimary' gutterBottom>
+          <span style={boldStyle}>Provide strategy to meet liquidity and debt issues:</span> we understand that some times businesses take unwanted debt to meet cashflow constraints. Out team of financial engineer can you get out that situation just a little quicker, by using short term and long term strategies focused on growth.
+        </Typography>
+      </ListItem>
+    </List>
+    <StickyFooter/>
   </div>
 )};
 export default ServicesPage;
