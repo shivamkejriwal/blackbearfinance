@@ -3,6 +3,7 @@ import 'firebase/auth';
 import 'firebase/database';
 import 'firebase/firestore';
 import 'firebase/analytics';
+import 'firebase/performance';
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -24,6 +25,7 @@ class Firebase {
     this.db = app.database();
     this.firestore = app.firestore();
     this.analytics = app.analytics();
+    this.perf = app.performance();
     /* Social Sign In Method Provider */
 
     this.googleProvider = new app.auth.GoogleAuthProvider();

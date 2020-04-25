@@ -8,6 +8,7 @@ import { withFirebase } from '../Firebase';
 
 const HomePage = ({ firebase }) => {
   firebase.analytics.logEvent('PageInit-HomePage');
+  // gtag('event', 'gtag-PageInit-HomePage');
   console.log('console-PageInit-HomePage');
   return (
   <div>
