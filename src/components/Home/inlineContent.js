@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
         paddingBottom: theme.spacing(5),
     },
     paper: {
-        // backgroundColor: theme.palette.background.paper
+        background: '#fafafa'
     }
 }));
 
