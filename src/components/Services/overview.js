@@ -14,9 +14,9 @@ import AutorenewIcon from '@material-ui/icons/Autorenew';
 import { Logger } from '../../utils/logger';
 
 
-const divStyle = {
-    padding: '20px 0',
-};
+// const divStyle = {
+//     padding: '20px 0',
+// };
   
 const boldStyle = {
     fontWeight: 'bold'
