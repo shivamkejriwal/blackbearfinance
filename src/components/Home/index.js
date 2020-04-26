@@ -1,8 +1,8 @@
 import React from 'react';
 import StickyFooter from './footer';
-import { Jumbotron } from './jumbotron';
-import { Highlight } from './highlight';
-import { InlineContent } from './inlineContent';
+import Jumbotron from './jumbotron';
+import Highlight from './highlight';
+import InlineContent from './inlineContent';
 import InlineContactUs from './inlineContactUs';
 import { Logger } from '../../utils/logger';
 
