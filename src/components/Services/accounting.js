@@ -4,7 +4,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 // import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
-import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+// import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import { Logger } from '../../utils/logger';
 
 const boldStyle = {
