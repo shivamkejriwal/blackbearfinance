@@ -44,7 +44,7 @@ export const InlineContent = () => {
                             <Typography component='h6' variant='h6' align='left' color='textPrimary' gutterBottom>
                                 What is virtual CFO services? 
                             </Typography>
-                            <Typography variant='body1' align='center' color='textPrimary' gutterBottom>
+                            <Typography variant='body1' color='textPrimary' gutterBottom>
                                 Virtual CFO services provide financial assistance and consultancy in a by project or part-time basis. Services offered generally include strategies to maximize profitability, recognize inefficiencies in operation, prepare for growth opportunities and facilitate transactions.
                             </Typography>
                         </Paper>
