@@ -17,20 +17,22 @@ const config = {
 };
 class Firebase {
   constructor() {
-    app.initializeApp(config);
-    app.analytics();
-    /* Firebase APIs */
-    this.auth = app.auth();
-    this.db = app.database();
-    this.firestore = app.firestore();
-    this.analytics = app.analytics();
-    this.perf = app.performance();
-    /* Social Sign In Method Provider */
-
-    this.googleProvider = new app.auth.GoogleAuthProvider();
-    this.facebookProvider = new app.auth.FacebookAuthProvider();
-    this.twitterProvider = new app.auth.TwitterAuthProvider();
-    Firebase.instance = this;
+    if (!Firebase.instance) {
+      app.initializeApp(config);
+      app.analytics();
+      /* Firebase APIs */
+      this.auth = app.auth();
+      this.db = app.database();
+      this.firestore = app.firestore();
+      this.analytics = app.analytics();
+      this.perf = app.performance();
+      /* Social Sign In Method Provider */
+  
+      this.googleProvider = new app.auth.GoogleAuthProvider();
+      this.facebookProvider = new app.auth.FacebookAuthProvider();
+      this.twitterProvider = new app.auth.TwitterAuthProvider();
+      Firebase.instance = this;
+    }
   }
     // *** Auth API ***
     doCreateUserWithEmailAndPassword = (email, password) =>
