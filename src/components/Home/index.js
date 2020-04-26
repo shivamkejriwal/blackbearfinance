@@ -1,5 +1,5 @@
 import React from 'react';
-import { StickyFooter } from './footer';
+import StickyFooter from './footer';
 import { Jumbotron } from './jumbotron';
 import { Highlight } from './highlight';
 import { InlineContent } from './inlineContent';
@@ -25,7 +25,3 @@ class HomePage extends React.Component {
   }
 };
 export default HomePage;
-// export default withFirebase(HomePage);
-// import { withAuthorization } from '../Authentication/Session';
-// const condition = authUser => !!authUser;
-// export default withAuthorization(condition)(HomePage);

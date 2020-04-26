@@ -1,5 +1,5 @@
 import React from 'react';
-import { StickyFooter } from '../Home/footer';
+import StickyFooter from '../Home/footer';
 import { Logger } from '../../utils/logger';
 
 const ContactUsPage = () => {

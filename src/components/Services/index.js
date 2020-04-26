@@ -6,7 +6,7 @@ import BookkeepingServices from './bookkeeping';
 import AccountingServices from './accounting';
 import CfoServices from './cfo';
 import ContactUser from './contactUser';
-import { StickyFooter } from '../Home/footer';
+import StickyFooter from '../Home/footer';
 
 import { Logger } from '../../utils/logger';
 
@@ -14,22 +14,22 @@ const divStyle = {
   padding: '20px 0',
 };
 
-// const useStyles = makeStyles((theme) => ({
-//   root: {},
-// }));
-
-const ServicesPage = () => {
-  Logger().log('ServicesPage-init');
-  // const classes = useStyles();
+class ServicesPage extends React.Component {
+  componentDidMount() {
+    Logger().log('ServicesPage-componentDidMount');
+  }
   
-  return (
-  <div style={divStyle}>
-    <ServiceOverview/>
-    <BookkeepingServices/>
-    <AccountingServices/>
-    <CfoServices/>
-    <ContactUser/>
-    <StickyFooter/>
-  </div>
-)};
+  render() {
+    return (
+      <div style={divStyle}>
+        <ServiceOverview/>
+        <BookkeepingServices/>
+        <AccountingServices/>
+        <CfoServices/>
+        <ContactUser/>
+        <StickyFooter/>
+      </div>
+    )
+  }
+};
 export default ServicesPage;

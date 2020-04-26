@@ -52,5 +52,4 @@ class ContactUser extends React.Component {
         );
     }
 };
-
 export default withStyles(useStyles)(ContactUser);
