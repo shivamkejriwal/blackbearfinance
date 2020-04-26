@@ -5,6 +5,7 @@ import ServiceOverview from './overview';
 import BookkeepingServices from './bookkeeping';
 import AccountingServices from './accounting';
 import CfoServices from './cfo';
+import ContactUser from './contactUser';
 import { StickyFooter } from '../Home/footer';
 
 import { Logger } from '../../utils/logger';
@@ -27,6 +28,7 @@ const ServicesPage = () => {
     <BookkeepingServices/>
     <AccountingServices/>
     <CfoServices/>
+    <ContactUser/>
     <StickyFooter/>
   </div>
 )};
