@@ -5,13 +5,14 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import CallIcon from '@material-ui/icons/Call';
 
-import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
+import { Logger } from '../../utils/logger';
 
 const linkStyle = {
     textDecoration: 'none'
   }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = (theme) => ({
     root: {
         flexGrow: 1,
         justifyContent: 'center',
@@ -21,26 +22,37 @@ const useStyles = makeStyles((theme) => ({
     button: {
         borderRadius: 25
     }
-}));
+});
+class InlineContactUs extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
 
-export const InlineContactUs = () => {
-    const classes = useStyles();
+    componentDidMount() {
+        Logger().log('InlineContactUs-componentDidMount');
+    }
 
-    return (
-        <div className={classes.root}>
-            <Grid container justify="center" alignItems="center">
-                <Link to={ROUTES.CONTACTUS}  style={linkStyle}>
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        size="large"
-                        className={classes.button}
-                        startIcon={<CallIcon />}
-                    >
-                        Contact Us
-                    </Button>
-                </Link>
-            </Grid>
-        </div>
-    );
+    render() {
+        const { classes } = this.props;
+        return (
+            <div className={classes.root}>
+                <Grid container justify="center" alignItems="center">
+                    <Link to={ROUTES.CONTACTUS}  style={linkStyle}>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            size="large"
+                            className={classes.button}
+                            startIcon={<CallIcon />}
+                        >
+                            Contact Us
+                        </Button>
+                    </Link>
+                </Grid>
+            </div>
+        );
+    }
 };
+
+export default withStyles(useStyles)(InlineContactUs);

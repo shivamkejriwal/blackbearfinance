@@ -26,9 +26,7 @@ const useStyles = (theme) => ({
 class ContactUser extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            // classes: useStyles()
-        };
+        this.state = {};
     }
 
     componentDidMount() {
@@ -38,19 +36,19 @@ class ContactUser extends React.Component {
     render() {
         const { classes } = this.props;
         return (
-        <div style={divStyle}>
-            <Grid container justify="center" alignItems="center">
-                <Button
-                    variant="contained"
-                    color="primary"
-                    size="large"
-                    className={classes.button}
-                    startIcon={<CallIcon />}
-                >
-                    Let us contact you
-                </Button>
-            </Grid>
-        </div>
+            <div style={divStyle}>
+                <Grid container justify="center" alignItems="center">
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        size="large"
+                        className={classes.button}
+                        startIcon={<CallIcon />}
+                    >
+                        Let us contact you
+                    </Button>
+                </Grid>
+            </div>
         );
     }
 };
