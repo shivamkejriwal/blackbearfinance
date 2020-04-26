@@ -24,7 +24,7 @@ const boldStyle = {
 
 class ServiceOverview extends React.Component {
     componentDidMount() {
-        Logger().log('ServiceOverview-componentDidMount');
+        Logger().log('ServiceOverview-componentDidMount', { consoleOnly: true });
     }
     
     render() {

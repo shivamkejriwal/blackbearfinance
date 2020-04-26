@@ -65,6 +65,7 @@ class SignInFormBase extends Component {
     };
 
     onChange = event => {
+        console.log('SignInFormBase-onChange', event);
         this.setState({ [event.target.name]: event.target.value });
     };
 

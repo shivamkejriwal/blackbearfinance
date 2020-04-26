@@ -95,7 +95,7 @@ class Highlight extends React.Component {
   }
 
   componentDidMount() {
-    Logger().log('Highlight-componentDidMount');
+    Logger().log('Highlight-componentDidMount', { consoleOnly: true });
   }
 
   render() {

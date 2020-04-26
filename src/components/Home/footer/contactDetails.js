@@ -22,7 +22,7 @@ class ContactDetails extends React.Component {
     }
   
     componentDidMount() {
-      Logger().log('ContactDetails-componentDidMount');
+      Logger().log('ContactDetails-componentDidMount', { consoleOnly: true });
     }
   
     render() {

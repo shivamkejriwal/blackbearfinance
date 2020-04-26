@@ -12,7 +12,7 @@ const boldStyle = {
 
 class CfoServices extends React.Component {
     componentDidMount() {
-        Logger().log('CfoServices-componentDidMount');
+        Logger().log('CfoServices-componentDidMount', { consoleOnly: true });
     }
     
     render() {

@@ -29,7 +29,7 @@ class MiniNavigation extends React.Component {
     }
 
     componentDidMount() {
-        Logger().log('MiniNavigation-componentDidMount');
+        Logger().log('MiniNavigation-componentDidMount', { consoleOnly: true });
     }
 
     render() {

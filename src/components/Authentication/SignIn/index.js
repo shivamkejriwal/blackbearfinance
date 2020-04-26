@@ -14,6 +14,8 @@ import { withFirebase } from '../../Firebase';
 import * as ROUTES from '../../../constants/routes';
 import SignInFormBase from './signInFormBase';
 
+import { Firestore } from '../../../utils/firestore';
+
 const SignInPage = () => (
   <div>
     <Container component="main" maxWidth="xs">
@@ -47,6 +49,37 @@ const ERROR_MSG_ACCOUNT_EXISTS = `
   your personal account page.
 `;
 
+
+const storeUser = (module, UserPayload) => {
+  console.log('SignIn-storeUser', UserPayload);
+  // Create a user in your Firebase Realtime Database too
+  return Firestore()
+    .getUser()
+    .then(user => {
+      console.log('SignIn-foundUser', user);
+      // const context = {};
+      // const success = Firestore().setUser(user, context);
+      // if (success) {
+      //   console.log('SignIn-userSaved', user.uid);
+      // }
+    });
+}
+
+const onSuccess = (module) => {
+  console.log('SignIn-onSuccess');
+  module.setState({ error: null });
+  module.props.history.push(ROUTES.HOME);
+}
+
+const errorHandler = (module, error) => {
+  if (error.code === ERROR_CODE_ACCOUNT_EXISTS) {
+    error.message = ERROR_MSG_ACCOUNT_EXISTS;
+  }
+  console.log('SignIn-errorHandler', error);
+  module.setState({ error });
+}
+
+
 class SignInGoogleBase extends Component {
   constructor(props) {
     super(props);
@@ -57,25 +90,9 @@ class SignInGoogleBase extends Component {
   onSubmit = event => {
     this.props.firebase
       .doSignInWithGoogle()
-      .then(socialAuthUser => {
-        // Create a user in your Firebase Realtime Database too
-        return this.props.firebase.user(socialAuthUser.user.uid).set({
-          username: socialAuthUser.user.displayName,
-          email: socialAuthUser.user.email,
-          roles: {},
-        });
-      })
-      .then(() => {
-        this.setState({ error: null });
-        this.props.history.push(ROUTES.HOME);
-      })
-      .catch(error => {
-        if (error.code === ERROR_CODE_ACCOUNT_EXISTS) {
-          error.message = ERROR_MSG_ACCOUNT_EXISTS;
-        }
-
-        this.setState({ error });
-      });
+      .then(UserPayload => storeUser(this, UserPayload))
+      .then(onSuccess(this))
+      .catch(e => errorHandler(this, e));
 
     event.preventDefault();
   };
@@ -103,25 +120,9 @@ class SignInFacebookBase extends Component {
   onSubmit = event => {
     this.props.firebase
       .doSignInWithFacebook()
-      .then(socialAuthUser => {
-        // Create a user in your Firebase Realtime Database too
-        return this.props.firebase.user(socialAuthUser.user.uid).set({
-          username: socialAuthUser.additionalUserInfo.profile.name,
-          email: socialAuthUser.additionalUserInfo.profile.email,
-          roles: {},
-        });
-      })
-      .then(() => {
-        this.setState({ error: null });
-        this.props.history.push(ROUTES.HOME);
-      })
-      .catch(error => {
-        if (error.code === ERROR_CODE_ACCOUNT_EXISTS) {
-          error.message = ERROR_MSG_ACCOUNT_EXISTS;
-        }
-
-        this.setState({ error });
-      });
+      .then(UserPayload => storeUser(this, UserPayload))
+      .then(onSuccess(this))
+      .catch(e => errorHandler(this, e));
 
     event.preventDefault();
   };
@@ -149,25 +150,9 @@ class SignInTwitterBase extends Component {
   onSubmit = event => {
     this.props.firebase
       .doSignInWithTwitter()
-      .then(socialAuthUser => {
-        // Create a user in your Firebase Realtime Database too
-        return this.props.firebase.user(socialAuthUser.user.uid).set({
-          username: socialAuthUser.additionalUserInfo.profile.name,
-          email: socialAuthUser.additionalUserInfo.profile.email,
-          roles: {},
-        });
-      })
-      .then(() => {
-        this.setState({ error: null });
-        this.props.history.push(ROUTES.HOME);
-      })
-      .catch(error => {
-        if (error.code === ERROR_CODE_ACCOUNT_EXISTS) {
-          error.message = ERROR_MSG_ACCOUNT_EXISTS;
-        }
-
-        this.setState({ error });
-      });
+      .then(UserPayload => storeUser(this, UserPayload))
+      .then(onSuccess(this))
+      .catch(e => errorHandler(this, e));
 
     event.preventDefault();
   };

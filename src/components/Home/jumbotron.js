@@ -20,7 +20,7 @@ class Jumbotron extends React.Component {
     }
 
     componentDidMount() {
-        Logger().log('Jumbotron-componentDidMount');
+        Logger().log('Jumbotron-componentDidMount', { consoleOnly: true });
     }
 
     render() {

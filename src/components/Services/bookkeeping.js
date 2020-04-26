@@ -12,7 +12,7 @@ const boldStyle = {
 
 class BookkeepingServices extends React.Component {
     componentDidMount() {
-        Logger().log('BookkeepingServices-componentDidMount');
+        Logger().log('BookkeepingServices-componentDidMount', { consoleOnly: true });
     }
     
     render() {

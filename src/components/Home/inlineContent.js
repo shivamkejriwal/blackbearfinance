@@ -40,7 +40,7 @@ class InlineContent extends React.Component {
     }
 
     componentDidMount() {
-        Logger().log('InlineContent-componentDidMount');
+        Logger().log('InlineContent-componentDidMount', { consoleOnly: true });
     }
 
     render() {
