@@ -28,6 +28,7 @@ class ContactUser extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
+        this.action = this.action.bind(this);
     }
 
     componentDidMount() {
@@ -36,17 +37,22 @@ class ContactUser extends React.Component {
 
     action () {
         Logger().log('LetUsContactYou');
-        Firestore().getUser().then(user => {
-            Logger().log('LetUsContactYou-CurrentUser', {
-                user,
-                consoleOnly: true
-            });
-            const requestCallBackCount = user.requestCallBackCount || 0;
-            Firestore().setUser(user, {
-                'requestCallBackCount': requestCallBackCount + 1,
-                'requestCallBackDate': `${getCurrentTime().dateString}`
-            });
-        });
+        Firestore()
+            .getUser()
+            .then(user => {
+                Logger().log('LetUsContactYou-CurrentUser', {
+                    user,
+                    consoleOnly: true
+                });
+                const requestCallBackCount = user.requestCallBackCount || 0;
+                return Firestore().setUser(user, {
+                    'requestCallBackCount': requestCallBackCount + 1,
+                    'requestCallBackDate': `${getCurrentTime().dateString}`
+                });
+            })
+            .then(() => {
+                this.props.onSubmit();
+            })
         
     }
     

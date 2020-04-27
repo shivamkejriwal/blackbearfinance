@@ -15,18 +15,31 @@ const divStyle = {
 };
 
 class ServicesPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
   componentDidMount() {
     Logger().log('ServicesPage-componentDidMount');
+  }
+
+  handleChange() {}
+
+  onSubmit() {
+    Logger().log('ServicesPage-ContactUser-onSubmit');
   }
   
   render() {
     return (
       <div style={divStyle}>
-        <ServiceOverview/>
-        <BookkeepingServices/>
-        <AccountingServices/>
-        <CfoServices/>
-        <ContactUser/>
+        <form noValidate onSubmit={this.onSubmit} >
+          <ServiceOverview handleChange={this.handleChange}/>
+          <BookkeepingServices handleChange={this.handleChange}/>
+          <AccountingServices handleChange={this.handleChange}/>
+          <CfoServices handleChange={this.handleChange}/>
+          <ContactUser onSubmit={this.onSubmit} />
+        </form>
         <StickyFooter/>
       </div>
     )
