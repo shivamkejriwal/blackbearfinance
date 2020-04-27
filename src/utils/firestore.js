@@ -15,14 +15,14 @@ export const Firestore = () => {
                     'email': payload.email,
                     'displayName': payload.displayName,
                 });
-                Logger.log('createUser-success');
+                Logger().log('createUser-success');
                 return true;
             }
             else throw new Error('No UID');
         }
         catch (e) {
             // console.log('createUser-error', e);
-            Logger.log('createUser-error');
+            Logger().log('createUser-error');
             return false;
         }
     }
@@ -31,7 +31,7 @@ export const Firestore = () => {
         try {
             const currentUser = firebase.auth.currentUser;
             if (currentUser) {
-                Logger.log('getUser-currentUser', {
+                Logger().log('getUser-currentUser', {
                     currentUser,
                     consoleOnly: true
                 });
@@ -43,7 +43,7 @@ export const Firestore = () => {
                 } 
 
                 const data = doc.data();
-                Logger.log('getUser-success', {
+                Logger().log('getUser-success', {
                     uid: data.uid
                 });
                 return data;
@@ -52,7 +52,7 @@ export const Firestore = () => {
         }
         catch (e) {
             // console.log('getUser-error', e);
-            Logger.log('getUser-error');
+            Logger().log('getUser-error');
             return '';
         }
     }
@@ -68,7 +68,7 @@ export const Firestore = () => {
         }
         catch (e) {
             // console.log('setUser-error', e);
-            Logger.log('setUser-error');
+            Logger().log('setUser-error');
             return false;
         }
     }

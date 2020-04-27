@@ -7,8 +7,8 @@ export const Logger = () => {
             firebase.analytics.logEvent(event);
             console.log(`console-${event}`);
         }
-        else if(payload && !payload.consoleOnly) {
-            firebase.analytics.logEvent(event, payload);
+        else if(payload && payload.consoleOnly) {
+            console.log(`console-${event}`, payload);
         }
         else {
             firebase.analytics.logEvent(event, payload);
