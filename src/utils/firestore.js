@@ -21,7 +21,8 @@ export const Firestore = () => {
             else throw new Error('No UID');
         }
         catch (e) {
-            console.log('createUser-error', e);
+            // console.log('createUser-error', e);
+            Logger.log('createUser-error');
             return false;
         }
     }
@@ -30,17 +31,19 @@ export const Firestore = () => {
         try {
             const currentUser = firebase.auth.currentUser;
             if (currentUser) {
-                console.log('getUser-currentUser', currentUser);
+                Logger.log('getUser-currentUser', {
+                    currentUser,
+                    consoleOnly: true
+                });
                 const user = db.collection('Users').doc(currentUser.uid);
                 let doc = await user.get();
                 if (!doc.exists) {
-                    console.log('getUser-NoDoc');
                     createUser(currentUser.uid, currentUser);
                     doc = await user.get();
                 } 
 
                 const data = doc.data();
-                console.log('getUser-foundUser', {
+                Logger.log('getUser-success', {
                     uid: data.uid
                 });
                 return data;
@@ -48,7 +51,8 @@ export const Firestore = () => {
             else throw new Error('No CurrentUser');
         }
         catch (e) {
-            console.log('getUser-error', e);
+            // console.log('getUser-error', e);
+            Logger.log('getUser-error');
             return '';
         }
     }
@@ -63,7 +67,8 @@ export const Firestore = () => {
             return true;
         }
         catch (e) {
-            console.log('setUser-error', e);
+            // console.log('setUser-error', e);
+            Logger.log('setUser-error');
             return false;
         }
     }

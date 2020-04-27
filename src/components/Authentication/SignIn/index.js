@@ -15,6 +15,7 @@ import * as ROUTES from '../../../constants/routes';
 import SignInFormBase from './signInFormBase';
 
 import { Firestore } from '../../../utils/firestore';
+import { Logger } from '../../../utils/logger';
 
 const SignInPage = () => (
   <div>
@@ -51,12 +52,11 @@ const ERROR_MSG_ACCOUNT_EXISTS = `
 
 
 const storeUser = (module, UserPayload) => {
-  console.log('SignIn-storeUser', UserPayload);
   // Create a user in your Firebase Realtime Database too
   return Firestore()
     .getUser()
     .then(user => {
-      console.log('SignIn-foundUser', user);
+      Logger().log('SignIn-foundUser');
       // const context = {};
       // const success = Firestore().setUser(user, context);
       // if (success) {
@@ -66,7 +66,7 @@ const storeUser = (module, UserPayload) => {
 }
 
 const onSuccess = (module) => {
-  console.log('SignIn-onSuccess');
+  Logger().log('SignIn-onSuccess');
   module.setState({ error: null });
   module.props.history.push(ROUTES.HOME);
 }
@@ -75,7 +75,10 @@ const errorHandler = (module, error) => {
   if (error.code === ERROR_CODE_ACCOUNT_EXISTS) {
     error.message = ERROR_MSG_ACCOUNT_EXISTS;
   }
-  console.log('SignIn-errorHandler', error);
+  Logger().log('SignIn-errorHandler', {
+    code: error.code,
+    message: error.message
+  });
   module.setState({ error });
 }
 
