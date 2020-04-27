@@ -4,8 +4,6 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import CallIcon from '@material-ui/icons/Call';
 import { Logger } from '../../utils/logger';
-import { Firestore } from '../../utils/firestore';
-import { getCurrentTime } from '../../utils/util';
 import { withStyles } from '@material-ui/core/styles';
 
 const divStyle = {
@@ -28,32 +26,10 @@ class ContactUser extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
-        this.action = this.action.bind(this);
     }
 
     componentDidMount() {
         Logger().log('ContactUser-componentDidMount');
-    }
-
-    action () {
-        Logger().log('LetUsContactYou');
-        Firestore()
-            .getUser()
-            .then(user => {
-                Logger().log('LetUsContactYou-CurrentUser', {
-                    user,
-                    consoleOnly: true
-                });
-                const requestCallBackCount = user.requestCallBackCount || 0;
-                return Firestore().setUser(user, {
-                    'requestCallBackCount': requestCallBackCount + 1,
-                    'requestCallBackDate': `${getCurrentTime().dateString}`
-                });
-            })
-            .then(() => {
-                this.props.onSubmit();
-            })
-        
     }
     
     render() {
@@ -67,7 +43,7 @@ class ContactUser extends React.Component {
                         size="large"
                         className={classes.button}
                         startIcon={<CallIcon />}
-                        onClick={this.action}
+                        onClick={this.props.onSubmit}
                     >
                         Let us contact you
                     </Button>

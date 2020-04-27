@@ -197,3 +197,13 @@ export const options = [
         cfo
     }
 ];
+
+export const serviceKeys = () => {
+    const keys = [];
+    options.forEach(option => {
+        const { category } = option;
+        Object.keys(option[category])
+            .forEach(key => keys.push(key));
+    });
+    return keys;
+}

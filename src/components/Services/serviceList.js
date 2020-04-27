@@ -5,7 +5,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import Typography from '@material-ui/core/Typography';
 import Checkbox from '@material-ui/core/Checkbox';
 
-import { options } from './options';
+import { options, serviceKeys } from './options';
 import { Logger } from '../../utils/logger';
 
 class ServiceList extends React.Component {
@@ -13,10 +13,9 @@ class ServiceList extends React.Component {
         super(props);
         this.handleClick = this.handleClick.bind(this);
         this.isSelected = this.isSelected.bind(this);
-        this.keys = Object.keys(options);
 
         const state = {};
-        this.keys.forEach(key => {
+        serviceKeys().forEach(key => {
             state[key] = false;
         })
         this.state = state;
@@ -24,6 +23,10 @@ class ServiceList extends React.Component {
 
     componentDidMount() {
         Logger().log('ServiceList-componentDidMount', { consoleOnly: true });
+    }
+
+    componentDidUpdate() {
+        this.props.handleChange(this.state);
     }
 
     isSelected() {
@@ -35,10 +38,13 @@ class ServiceList extends React.Component {
     }
 
     handleClick(name) {
+        Logger().log('ServiceList-handleClick', {
+            key: name,
+            value: this.state[name]
+        });
         const value = {};
-        value[name] = true;
+        value[name] = !this.state[name];
         this.setState(value);
-        this.isSelected()
     }
 
     getListItem(option, name) {
@@ -49,6 +55,7 @@ class ServiceList extends React.Component {
                 <ListItemIcon>
                     { this.isSelected()
                     ? <Checkbox
+                        checked={this.state[name]}
                         onChange={this.handleChange}
                         inputProps={{ 'aria-label': 'primary checkbox' }}
                         />
