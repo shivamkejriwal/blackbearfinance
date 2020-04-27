@@ -1,10 +1,6 @@
 import React from 'react';
-// import { makeStyles } from '@material-ui/core/styles';
 
-import ServiceOverview from './overview';
-import BookkeepingServices from './bookkeeping';
-import AccountingServices from './accounting';
-import CfoServices from './cfo';
+import ServiceList from './serviceList';
 import ContactUser from './contactUser';
 import StickyFooter from '../Home/footer';
 
@@ -34,10 +30,7 @@ class ServicesPage extends React.Component {
     return (
       <div style={divStyle}>
         <form noValidate onSubmit={this.onSubmit} >
-          <ServiceOverview handleChange={this.handleChange}/>
-          <BookkeepingServices handleChange={this.handleChange}/>
-          <AccountingServices handleChange={this.handleChange}/>
-          <CfoServices handleChange={this.handleChange}/>
+          <ServiceList handleChange={this.handleChange}/>
           <ContactUser onSubmit={this.onSubmit} />
         </form>
         <StickyFooter/>
