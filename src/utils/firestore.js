@@ -73,9 +73,30 @@ export const Firestore = () => {
         }
     }
 
+    const getWaitingClients = async () => {
+        try {
+            const waitingUsers = db.collection('Users')
+                .where('requestCallBackCount', '>', 0)
+                .orderBy('requestCallBackCount','desc');
+            const snapshot = await waitingUsers.get();
+            if (snapshot.empty) {
+                console.log('No matching documents.');
+                throw new Error('No clients waiting');
+            }
+            const results = [];
+            snapshot.forEach(doc => results.push(doc.data()));
+            return results;
+        }
+        catch (e) {
+            Logger().log('getWaitingClients-error');
+            return [];
+        }
+    }
+
     return {
         createUser,
         getUser,
-        setUser
+        setUser,
+        getWaitingClients
     }
 };

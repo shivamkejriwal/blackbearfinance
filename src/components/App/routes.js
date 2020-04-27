@@ -8,6 +8,7 @@ import PasswordForgetPage from '../Authentication/PasswordForget';
 import HomePage from '../Home';
 import ContactUsPage from '../ContactUs';
 import ServicesPage from '../Services';
+import AdminPage from '../Admin';
 import * as ROUTES from '../../constants/routes';
 
 const AppRoutes = () => (
@@ -21,6 +22,7 @@ const AppRoutes = () => (
         />
         <Route path={ROUTES.CONTACTUS} component={ContactUsPage} />
         <Route path={ROUTES.SERVICES} component={ServicesPage} />
+        <Route path={ROUTES.ADMIN} component={AdminPage} />
     </Container>  
 );
 export default AppRoutes;

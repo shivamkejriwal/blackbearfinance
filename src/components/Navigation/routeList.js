@@ -7,6 +7,7 @@ import { StyledListItemText, StyledListItemIcon } from './StyledComponents';
 import HomeIcon from '@material-ui/icons/Home';
 import BusinessIcon from '@material-ui/icons/Business';
 import ContactsIcon from '@material-ui/icons/Contacts';
+import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import { withStyles } from '@material-ui/core/styles';
 
 import * as ROUTES from '../../constants/routes';
@@ -46,6 +47,14 @@ class SidebarList extends React.Component {
                             <BusinessIcon />
                         </StyledListItemIcon>
                         <StyledListItemText primary="Services" />
+                    </ListItem>
+                </Link>
+                <Link to={ROUTES.ADMIN}>
+                    <ListItem button>
+                        <StyledListItemIcon>
+                            <SupervisorAccountIcon />
+                        </StyledListItemIcon>
+                        <StyledListItemText primary="Admin" />
                     </ListItem>
                 </Link>
             </List>
