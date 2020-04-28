@@ -63,7 +63,7 @@ class InlineContent extends React.Component {
                         <Grid item xs={12} sm={6}>
                             <Paper className={classes.paper} elevation={1}>
                                 {/* xs=12 sm=6 */}
-                                <img src="/images/photo-of-person-holding-mobile-phone-3183153.jpg" alt="Smiley face" style={imageStyle}></img>
+                                <img src='/images/photo-of-person-holding-mobile-phone-3183153.jpg' alt='Smiley face' style={imageStyle}></img>
                             </Paper>
                         </Grid>
                     </Grid>
@@ -72,7 +72,7 @@ class InlineContent extends React.Component {
                         <Grid item xs={12} sm={6}>
                             <Paper className={classes.paper} elevation={1}>
                                 {/* xs=12 sm=6 */}
-                                <img src="/images/photo-of-people-doing-handshakes-3183172.jpg" alt="Smiley face" style={imageStyle}></img>
+                                <img src='/images/photo-of-people-doing-handshakes-3183172.jpg' alt='Smiley face' style={imageStyle}></img>
                             </Paper>
                         </Grid>
                         <Grid item xs={12} sm={6}>

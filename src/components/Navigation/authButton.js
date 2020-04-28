@@ -14,7 +14,7 @@ const AuthButton = ({ authUser }) => {
     )
     :(
         <Link to={ROUTES.SIGN_IN} className={classes.linkText}>
-            <Button color="inherit">Login</Button>
+            <Button color='inherit'>Login</Button>
         </Link>
     );
 };

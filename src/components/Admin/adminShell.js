@@ -14,9 +14,9 @@ const useStyles = (theme) => ({
     paddingBottom: theme.spacing(5),
   },
   toolBar: {
-    margin: "auto",
+    margin: 'auto',
     maxWidth: 800,
-    width: "100%"
+    width: '100%'
   },
   main: {
     marginRight: '30px',

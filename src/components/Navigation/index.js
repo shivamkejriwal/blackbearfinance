@@ -31,18 +31,18 @@ const ApplicationBar = ({ authUser }) => {
     const handleDrawerClose = () => setOpen(false);
     return (
         <div className={classes.root}>
-        <AppBar position="static"
+        <AppBar position='static'
                 className={classes.colorPrimary}
         >
             <Toolbar>
-            <IconButton edge="start" 
+            <IconButton edge='start' 
                         className={classes.menuButton} 
-                        color="inherit" 
-                        aria-label="menu"
+                        color='inherit' 
+                        aria-label='menu'
                         onClick={handleDrawerOpen}>
                 <MenuIcon />
             </IconButton>
-            <Typography variant="h6" className={classes.title}>
+            <Typography variant='h6' className={classes.title}>
                 Black Bear Finance
             </Typography>
             <AuthButton authUser={authUser} />

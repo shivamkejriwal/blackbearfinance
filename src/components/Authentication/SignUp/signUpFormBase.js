@@ -94,26 +94,26 @@ class SignUpFormBase extends Component {
         const { classes } = this.props;
 
         return (
-            <Container component="main" maxWidth="xs">
+            <Container component='main' maxWidth='xs'>
               <CssBaseline />
               <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
                   <LockOutlinedIcon />
                 </Avatar>
-                <Typography component="h1" variant="h5">
+                <Typography component='h1' variant='h5'>
                   Sign up
                 </Typography>
                 <form className={classes.form} noValidate onSubmit={this.onSubmit}>
                   <Grid container spacing={2}>
                     <Grid item xs={12} sm={6}>
                       <TextField
-                        autoComplete="fname"
-                        name="firstName"
-                        variant="outlined"
+                        autoComplete='fname'
+                        name='firstName'
+                        variant='outlined'
                         required
                         fullWidth
-                        id="firstName"
-                        label="First Name"
+                        id='firstName'
+                        label='First Name'
                         autoFocus
                         onChange={this.onChange}
                         value={firstName}
@@ -121,73 +121,73 @@ class SignUpFormBase extends Component {
                     </Grid>
                     <Grid item xs={12} sm={6}>
                       <TextField
-                        variant="outlined"
+                        variant='outlined'
                         required
                         fullWidth
-                        id="lastName"
-                        label="Last Name"
-                        name="lastName"
-                        autoComplete="lname"
+                        id='lastName'
+                        label='Last Name'
+                        name='lastName'
+                        autoComplete='lname'
                         onChange={this.onChange}
                         value={lastName}
                       />
                     </Grid>
                     <Grid item xs={12}>
                       <TextField
-                        variant="outlined"
+                        variant='outlined'
                         required
                         fullWidth
-                        id="email"
-                        label="Email Address"
-                        name="email"
-                        autoComplete="email"
+                        id='email'
+                        label='Email Address'
+                        name='email'
+                        autoComplete='email'
                         onChange={this.onChange}
                         value={email}
                       />
                     </Grid>
                     <Grid item xs={12}>
                       <TextField
-                        variant="outlined"
+                        variant='outlined'
                         required
                         fullWidth
-                        name="passwordOne"
-                        label="Password"
-                        type="password"
-                        id="passwordOne"
-                        autoComplete="current-password"
+                        name='passwordOne'
+                        label='Password'
+                        type='password'
+                        id='passwordOne'
+                        autoComplete='current-password'
                         onChange={this.onChange}
                         value={passwordOne}
                       />
                     </Grid>
                     <Grid item xs={12}>
                       <TextField
-                        variant="outlined"
+                        variant='outlined'
                         required
                         fullWidth
-                        name="passwordTwo"
-                        label="Password"
-                        type="password"
-                        id="passwordTwo"
-                        autoComplete="current-password"
+                        name='passwordTwo'
+                        label='Password'
+                        type='password'
+                        id='passwordTwo'
+                        autoComplete='current-password'
                         onChange={this.onChange}
                         value={passwordTwo}
                       />
                     </Grid>
                   </Grid>
                   <Button
-                    type="submit"
+                    type='submit'
                     fullWidth
-                    variant="contained"
-                    color="primary"
+                    variant='contained'
+                    color='primary'
                     className={classes.submit}
                     disabled={isInvalid}
                   >
                     Sign Up
                   </Button>
                   {error && <p>{error.message}</p>}
-                  <Grid container justify="flex-end">
+                  <Grid container justify='flex-end'>
                     <Grid item>
-                      <Link to={ROUTES.SIGN_IN} variant="body2">
+                      <Link to={ROUTES.SIGN_IN} variant='body2'>
                         Already have an account? Sign in
                       </Link>
                     </Grid>

@@ -42,7 +42,7 @@ class MiniNavigation extends React.Component {
                         <ListItemIcon>
                             <HomeIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Home" />
+                        <ListItemText primary='Home' />
                     </ListItem>
                 </Link>
                 <Link to={ROUTES.CONTACTUS} style={linkStyle}>
@@ -50,7 +50,7 @@ class MiniNavigation extends React.Component {
                         <ListItemIcon>
                             <ContactsIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Contact Us" />
+                        <ListItemText primary='Contact Us' />
                     </ListItem>
                 </Link>
                 <Link to={ROUTES.SERVICES} style={linkStyle}>
@@ -58,7 +58,7 @@ class MiniNavigation extends React.Component {
                         <ListItemIcon>
                             <BusinessIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Services" />
+                        <ListItemText primary='Services' />
                     </ListItem>
                 </Link>
                 </List>

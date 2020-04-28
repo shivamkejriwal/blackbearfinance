@@ -36,11 +36,11 @@ class ContactUser extends React.Component {
         const { classes } = this.props;
         return (
             <div style={divStyle}>
-                <Grid container justify="center" alignItems="center">
+                <Grid container justify='center' alignItems='center'>
                     <Button
-                        variant="contained"
-                        color="primary"
-                        size="large"
+                        variant='contained'
+                        color='primary'
+                        size='large'
                         className={classes.button}
                         startIcon={<CallIcon />}
                         onClick={this.props.onSubmit}

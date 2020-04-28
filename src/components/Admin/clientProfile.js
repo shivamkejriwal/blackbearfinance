@@ -98,7 +98,7 @@ class CientProfile extends React.Component {
                         </ListItemIcon>
                         <ListItemText primary={client.phone} />
                     </ListItem>
-                    <Divider variant="inset" component="li" />
+                    <Divider variant='inset' component='li' />
                 </List>
                 <Typography className={classes.padding} variant='h5' color='textPrimary' align='center' gutterBottom>
                     Last Request Details
@@ -114,7 +114,7 @@ class CientProfile extends React.Component {
                         <span style={boldStyle}>requestCallBackDate:</span> {client.requestCallBackDate}
                         </Typography>
                     </ListItem>
-                    <Divider variant="inset" component="li" />
+                    <Divider variant='inset' component='li' />
                 </List>
                 <Typography className={classes.padding} variant='h5' color='textPrimary' align='center' gutterBottom>
                     Requested Services
@@ -137,13 +137,13 @@ class CientProfile extends React.Component {
                 <TextareaAutosize 
                     rowsMin='10'
                     className={classes.textarea} 
-                    aria-label="empty textarea" 
-                    placeholder="Empty" />
-                <Grid className={classes.padding} container justify="center" alignItems="center">
+                    aria-label='empty textarea' 
+                    placeholder='Empty' />
+                <Grid className={classes.padding} container justify='center' alignItems='center'>
                     <Button
-                        variant="contained"
-                        color="primary"
-                        size="large"
+                        variant='contained'
+                        color='primary'
+                        size='large'
                         className={classes.button}
                         startIcon={<SaveIcon />}
                     >

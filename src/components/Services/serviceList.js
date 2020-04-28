@@ -74,7 +74,7 @@ class ServiceList extends React.Component {
                 <Typography component='h1' variant='h6' align='center' color='textPrimary' gutterBottom>
                     {option.heading}
                 </Typography>
-                <List component="nav" aria-label="main mailbox folders">
+                <List component='nav' aria-label='main mailbox folders'>
                     {keys.map((key) => this.getListItem(option[category], key))}
                 </List>
             </div>

@@ -32,11 +32,11 @@ class Jumbotron extends React.Component {
           Black Bear Finance
           </Typography>
           <Typography variant='h6' align='center' color='textSecondary' paragraph>
-          "CFOs can help companies successfully deliver on the full potential of a transformation. 
+          'CFOs can help companies successfully deliver on the full potential of a transformation. 
           To do so, they must be judicious about which activities truly add value and embrace their 
-          roles in leading the improvement in both performance and organizational health" - The role of the CEO, Mckinsey & Company,  2017.
+          roles in leading the improvement in both performance and organizational health' - The role of the CEO, Mckinsey & Company,  2017.
           </Typography>
-          <Grid container justify="center" alignItems="center">
+          <Grid container justify='center' alignItems='center'>
             <ArrowDownwardIcon/> 
           </Grid>
         </Container>

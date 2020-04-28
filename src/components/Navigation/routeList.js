@@ -30,7 +30,7 @@ class SidebarList extends React.Component {
                         <StyledListItemIcon>
                             <HomeIcon />
                         </StyledListItemIcon>
-                        <StyledListItemText primary="Home" />
+                        <StyledListItemText primary='Home' />
                     </ListItem>
                 </Link>
                 <Link to={ROUTES.CONTACTUS}>
@@ -38,7 +38,7 @@ class SidebarList extends React.Component {
                         <StyledListItemIcon>
                             <ContactsIcon />
                         </StyledListItemIcon>
-                        <StyledListItemText primary="Contact Us" />
+                        <StyledListItemText primary='Contact Us' />
                     </ListItem>
                 </Link>
                 <Link to={ROUTES.SERVICES}>
@@ -46,7 +46,7 @@ class SidebarList extends React.Component {
                         <StyledListItemIcon>
                             <BusinessIcon />
                         </StyledListItemIcon>
-                        <StyledListItemText primary="Services" />
+                        <StyledListItemText primary='Services' />
                     </ListItem>
                 </Link>
                 <Link to={ROUTES.ADMIN}>
@@ -54,7 +54,7 @@ class SidebarList extends React.Component {
                         <StyledListItemIcon>
                             <SupervisorAccountIcon />
                         </StyledListItemIcon>
-                        <StyledListItemText primary="Admin" />
+                        <StyledListItemText primary='Admin' />
                     </ListItem>
                 </Link>
             </List>

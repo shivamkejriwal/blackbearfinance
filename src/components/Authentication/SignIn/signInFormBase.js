@@ -76,49 +76,49 @@ class SignInFormBase extends Component {
         const isInvalid = password === '' || email === '';
 
         return (
-            <Container component="main" maxWidth="xs">
+            <Container component='main' maxWidth='xs'>
                 <CssBaseline />
                 <div className={classes.paper}>
                     <Avatar className={classes.avatar}>
                     <LockOutlinedIcon />
                     </Avatar>
-                    <Typography component="h1" variant="h5">
+                    <Typography component='h1' variant='h5'>
                     Sign in
                     </Typography>
                     <form className={classes.form} noValidate onSubmit={this.onSubmit} >
                         <TextField
-                            variant="outlined"
-                            margin="normal"
+                            variant='outlined'
+                            margin='normal'
                             required
                             fullWidth
-                            id="email"
-                            label="Email Address"
-                            name="email"
-                            autoComplete="email"
+                            id='email'
+                            label='Email Address'
+                            name='email'
+                            autoComplete='email'
                             autoFocus
                             onChange={this.onChange}
                         />
                         <TextField
-                            variant="outlined"
-                            margin="normal"
+                            variant='outlined'
+                            margin='normal'
                             required
                             fullWidth
-                            name="password"
-                            label="Password"
-                            type="password"
-                            id="password"
-                            autoComplete="current-password"
+                            name='password'
+                            label='Password'
+                            type='password'
+                            id='password'
+                            autoComplete='current-password'
                             onChange={this.onChange}
                         />
                         <FormControlLabel
-                            control={<Checkbox value="remember" color="primary" />}
-                            label="Remember me"
+                            control={<Checkbox value='remember' color='primary' />}
+                            label='Remember me'
                         />
                         <Button
-                            type="submit"
+                            type='submit'
                             fullWidth
-                            variant="contained"
-                            color="primary"
+                            variant='contained'
+                            color='primary'
                             className={classes.submit}
                             disabled={isInvalid}
                         >
@@ -127,13 +127,13 @@ class SignInFormBase extends Component {
                         {error && <p>{error.message}</p>}
                         <Grid container>
                             <Grid item xs>
-                                <Link to={ROUTES.PASSWORD_FORGET} variant="body2">
+                                <Link to={ROUTES.PASSWORD_FORGET} variant='body2'>
                                     Forgot password?
                                 </Link>
                             </Grid>
                             <Grid item>
-                                <Link to={ROUTES.SIGN_UP} variant="body2">
-                                    {"Don't have an account? Sign Up"}
+                                <Link to={ROUTES.SIGN_UP} variant='body2'>
+                                    {"'Don't have an account? Sign Up'"}
                                 </Link>
                             </Grid>
                         </Grid>

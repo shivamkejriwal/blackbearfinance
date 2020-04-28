@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
 const SignOutButton = ({ firebase }) => {
   const classes = useStyles();
   return (
-    <Button type="button" 
+    <Button type='button' 
           onClick={firebase.doSignOut}
           className={classes.linkText}>
       Sign Out

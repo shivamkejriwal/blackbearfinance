@@ -19,8 +19,8 @@ import { Logger } from '../../../utils/logger';
 
 const SignInPage = () => (
   <div>
-    <Container component="main" maxWidth="xs">
-      <List component="nav" aria-label="main mailbox folders">
+    <Container component='main' maxWidth='xs'>
+      <List component='nav' aria-label='main mailbox folders'>
         <ListItem button>
           <ListItemIcon>
             <EmailIcon />
@@ -105,7 +105,7 @@ class SignInGoogleBase extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <Button type="submit">Sign In with Google</Button>
+        <Button type='submit'>Sign In with Google</Button>
 
         {error && <p>{error.message}</p>}
       </form>
@@ -135,7 +135,7 @@ class SignInFacebookBase extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <Button type="submit">Sign In with Facebook</Button>
+        <Button type='submit'>Sign In with Facebook</Button>
 
         {error && <p>{error.message}</p>}
       </form>
@@ -165,7 +165,7 @@ class SignInTwitterBase extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <Button type="submit">Sign In with Twitter</Button>
+        <Button type='submit'>Sign In with Twitter</Button>
 
         {error && <p>{error.message}</p>}
       </form>
