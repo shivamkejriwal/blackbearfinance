@@ -14,8 +14,10 @@ import Typography from '@material-ui/core/Typography';
 import EmailIcon from '@material-ui/icons/Email';
 import PhoneIcon from '@material-ui/icons/Phone';
 import PersonIcon from '@material-ui/icons/Person';
+import SaveIcon from '@material-ui/icons/Save';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import Button from '@material-ui/core/Button';
 
 import { Logger } from '../../utils/logger';
 
@@ -137,6 +139,17 @@ class CientProfile extends React.Component {
                     className={classes.textarea} 
                     aria-label="empty textarea" 
                     placeholder="Empty" />
+                <Grid className={classes.padding} container justify="center" alignItems="center">
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        size="large"
+                        className={classes.button}
+                        startIcon={<SaveIcon />}
+                    >
+                        Save
+                    </Button>
+                </Grid>
             </div>
         );
     }
