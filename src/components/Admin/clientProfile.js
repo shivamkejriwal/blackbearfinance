@@ -84,7 +84,7 @@ class CientProfile extends React.Component {
                         <ListItemIcon>
                             <PersonIcon />
                         </ListItemIcon>
-                        <ListItemText primary={client.displayName} />
+                        <ListItemText primary={client.name} />
                     </ListItem>
                     <ListItem>
                         <ListItemIcon>

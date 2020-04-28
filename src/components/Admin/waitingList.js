@@ -51,7 +51,7 @@ class WaitingList extends React.Component {
                 <List>
                     {this.waitingClients.map((client, index) => (
                         <ListItem button
-                                key={client.uid} 
+                                key={index} 
                                 alignItems='flex-start'  
                                 className={classes.root}
                                 onClick={() => this.props.handleSelection(client, index)}
@@ -61,9 +61,8 @@ class WaitingList extends React.Component {
                                     <Avatar alt='Remy Sharp' src='' />
                                 </ListItemAvatar>
                                 <ListItemText
-                                    primary={client.displayName}
-                                    secondary={client.uid}
-                                    className={classes.inline}
+                                    primary={client.name || client.email || client.phone}
+                                    secondary={client.requestCallBackDate}
                                 />
                             </div>
                         </ListItem>

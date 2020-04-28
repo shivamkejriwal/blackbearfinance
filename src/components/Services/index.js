@@ -1,7 +1,7 @@
 import React from 'react';
 
 import ServiceList from './serviceList';
-import ContactUser from './contactUser';
+// import ContactUser from './contactUser';
 import ContactClient from './contactClient';
 import StickyFooter from '../Home/footer';
 
@@ -37,22 +37,19 @@ class ServicesPage extends React.Component {
     this.setState({showServices: !this.state.showServices});
   }
 
-  onSubmit() {
-    Logger().log('ServicesPage-ContactUser-onSubmit', this.serviceMap);
+  onSubmit(payload) {
+    Logger().log('ServicesPage-ContactUser-onSubmit', {
+      requestedServices: this.requestedServices,
+      payload
+    });
     Firestore()
-            .getUser()
-            .then(user => {
-                Logger().log('LetUsContactYou-CurrentUser', {
-                    user,
-                    consoleOnly: true
-                });
-                const requestCallBackCount = user.requestCallBackCount || 0;
-                return Firestore().setUser(user, {
-                    'requestCallBackCount': requestCallBackCount + 1,
-                    'requestCallBackDate': `${getCurrentTime().dateString}`,
-                    'requestedServices': this.requestedServices
-                });
-            });
+      .setClients({
+        name: payload.name,
+        phone: payload.phone,
+        email: payload.email,
+        requestCallBackDate: `${getCurrentTime().dateString}`,
+        requestedServices: this.requestedServices
+      });
   }
   
   render() {

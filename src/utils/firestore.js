@@ -1,6 +1,15 @@
 import { getInstance } from './firebase';
 import { Logger } from './logger';
 
+const replaceUndefined = (ctx) => {
+    const result = {};
+    Object.entries(ctx).forEach(([key, value]) => {
+        result[key] = value || '';
+    });
+    console.log('[sk]replaceUndefined', result);
+    return result;
+}
+
 export const Firestore = () => {
     const firebase = getInstance();
     const db = firebase.firestore;
@@ -73,11 +82,12 @@ export const Firestore = () => {
         }
     }
 
+    // ----------------------------------------------------------
+
     const getWaitingClients = async () => {
         try {
-            const waitingUsers = db.collection('Users')
-                .where('requestCallBackCount', '>', 0)
-                .orderBy('requestCallBackCount','desc');
+            const waitingUsers = db.collection('Clients')
+                .orderBy('requestCallBackDate','desc');
             const snapshot = await waitingUsers.get();
             if (snapshot.empty) {
                 console.log('No matching documents.');
@@ -93,10 +103,55 @@ export const Firestore = () => {
         }
     }
 
+    const setClients = async (context) => {
+        Logger().log('setClients-init', context);
+        try {
+            context = replaceUndefined(context);
+            const { name, email, phone } = context;
+            const id = `${name}-${email}-${phone}`.replace(' ','');
+            const client = db.collection('Clients').doc(id);
+            const doc = await client.get();
+            const data = doc.data();
+            if (!doc.exists) {
+                await client.set(context);
+            }
+            else {
+                const payload = Object.assign(data, context);
+                await client.set(payload);
+            }
+            return true;
+        }
+        catch (e) {
+            Logger().log('setClients-error', e);
+            return false;
+        }
+    }
+
+    const getClients = async (context) => {
+        try {
+            context = replaceUndefined(context);
+            const { name, email, phone } = context;
+            const id = `${name}-${email}-${phone}`.replace(' ','');
+            const client = db.collection('Clients').doc(id);
+            const doc = await client.get();
+            if (!doc.exists) {
+                throw new Error('No Clients Founds');
+            }
+            return doc.data();
+        }
+        catch (e) {
+            Logger().log('getClients-error', e);
+            return '';
+        }
+    }
+
     return {
         createUser,
         getUser,
         setUser,
-        getWaitingClients
+        // ---------------
+        getWaitingClients,
+        setClients,
+        getClients
     }
 };
