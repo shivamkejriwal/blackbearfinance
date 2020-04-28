@@ -28,7 +28,7 @@ const useStyles = (theme) => ({
   }
 });
 
-class AdminPage extends React.Component {
+class AdminShell extends React.Component {
 
     constructor(props) {
         super(props);
@@ -46,7 +46,7 @@ class AdminPage extends React.Component {
         Firestore()
         .getWaitingClients()
         .then(waitingClients => {
-            Logger().log('AdminPage-waitingClients', {
+            Logger().log('AdminShell-waitingClients', {
                 count: waitingClients.length
             });
             this.setState({
@@ -59,17 +59,17 @@ class AdminPage extends React.Component {
       
 
     componentDidMount() {
-        Logger().log('AdminPage-componentDidMount', {
+        Logger().log('AdminShell-componentDidMount', {
             count: this.state.waitingClients.length
         });
     }
 
     getWaitingClients() {
-        Logger().log('AdminPage-getWaitingClients');
+        Logger().log('AdminShell-getWaitingClients');
         return this.state.waitingClients;
     }
     handleSelection(client, index) {
-        Logger().log('AdminPage-handleSelection',{
+        Logger().log('AdminShell-handleSelection',{
             index
         });
         this.setState({
@@ -103,4 +103,4 @@ class AdminPage extends React.Component {
         );
     }
 }
-export default withStyles(useStyles)(AdminPage);
+export default withStyles(useStyles)(AdminShell);
