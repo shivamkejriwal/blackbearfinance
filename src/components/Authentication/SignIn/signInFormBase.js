@@ -133,7 +133,7 @@ class SignInFormBase extends Component {
                             </Grid>
                             <Grid item>
                                 <Link to={ROUTES.SIGN_UP} variant='body2'>
-                                    {"'Don't have an account? Sign Up'"}
+                                    {'Dont have an account? Sign Up'}
                                 </Link>
                             </Grid>
                         </Grid>

@@ -34,7 +34,7 @@ class ServiceList extends React.Component {
         for (let [key, value] of Object.entries(this.state)) {
             selected = selected || value;
         }
-        return selected;
+        return selected || this.props.showServices;
     }
 
     handleClick(name) {
