@@ -49,14 +49,14 @@ class SidebarList extends React.Component {
                         <StyledListItemText primary='Services' />
                     </ListItem>
                 </Link>
-                <Link to={ROUTES.ADMIN}>
+                {/* <Link to={ROUTES.ADMIN}>
                     <ListItem button>
                         <StyledListItemIcon>
                             <SupervisorAccountIcon />
                         </StyledListItemIcon>
                         <StyledListItemText primary='Admin' />
                     </ListItem>
-                </Link>
+                </Link> */}
             </List>
         );
     }
