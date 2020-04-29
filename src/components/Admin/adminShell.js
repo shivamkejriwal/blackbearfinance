@@ -82,7 +82,7 @@ class AdminShell extends React.Component {
         return (
             <Grid container spacing={1} className={classes.root} justify='space-between'>
                 <Grid item spacing={3} justify='center'
-                    xs={12} sm={4} md={3} lg={3}
+                    xs={12} sm={2} md={2} lg={2}
                     className={classes.drawer}>
                     <WaitingList 
                         getWaitingClients={this.getWaitingClients}

@@ -40,7 +40,8 @@ class ServiceList extends React.Component {
     handleClick(name) {
         Logger().log('ServiceList-handleClick', {
             key: name,
-            value: this.state[name]
+            value: this.state[name],
+            consoleOnly: true
         });
         const value = {};
         value[name] = !this.state[name];

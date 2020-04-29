@@ -3,7 +3,8 @@ export const getCurrentTime = () => {
     const day = today.getDate();
     const month = today.getMonth();
     const year = today.getFullYear();
-    const dateString = `${year}-${month}-${day}`;
+    const hour = today.getHours();
+    const dateString = `${year}-${month}-${day}-${hour}`;
 
     return {
        day, month, year, dateString

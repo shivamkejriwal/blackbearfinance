@@ -25,7 +25,9 @@ class StickyFooter extends React.Component {
     }
 
     componentDidMount() {
-        Logger().log('StickyFooter-componentDidMount');
+        Logger().log('StickyFooter-componentDidMount', {
+            consoleOnly: true
+        });
     }
 
     render() {

@@ -29,7 +29,10 @@ class ServicesPage extends React.Component {
   }
 
   handleChange(serviceMap) {
-    Logger().log('ServicesPage-handleChange', serviceMap);
+    Logger().log('ServicesPage-handleChange', {
+      serviceMap,
+      consoleOnly: true
+    });
     this.requestedServices = serviceMap;
   }
 
@@ -37,19 +40,25 @@ class ServicesPage extends React.Component {
     this.setState({showServices: !this.state.showServices});
   }
 
+  formValidation(payload) {
+    const context = {
+      name: payload.name || '',
+      phone: payload.phone || '',
+      email: payload.email || '',
+      requestCallBackDate: `${getCurrentTime().dateString}`,
+      requestedServices: this.requestedServices
+    }
+    return context;
+  }
+
   onSubmit(payload) {
-    Logger().log('ServicesPage-ContactUser-onSubmit', {
+    Logger().log('ServicesPage-onSubmit', {
+      payload,
       requestedServices: this.requestedServices,
-      payload
+      consoleOnly: true
     });
-    Firestore()
-      .setClients({
-        name: payload.name,
-        phone: payload.phone,
-        email: payload.email,
-        requestCallBackDate: `${getCurrentTime().dateString}`,
-        requestedServices: this.requestedServices
-      });
+    const context = this.formValidation(payload);
+    Firestore().setClients(context);
   }
   
   render() {

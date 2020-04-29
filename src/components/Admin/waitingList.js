@@ -39,7 +39,8 @@ class WaitingList extends React.Component {
 
     componentDidMount() {
         Logger().log('WaitingList-componentDidMount', {
-            waitingClients: this.waitingClients.length
+            waitingClients: this.waitingClients.length,
+            consoleOnly: true
         });
     }
 

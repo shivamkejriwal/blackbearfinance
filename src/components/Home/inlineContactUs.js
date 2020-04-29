@@ -30,7 +30,9 @@ class InlineContactUs extends React.Component {
     }
 
     componentDidMount() {
-        Logger().log('InlineContactUs-componentDidMount');
+        Logger().log('InlineContactUs-componentDidMount', {
+            consoleOnly: true
+        });
     }
 
     render() {

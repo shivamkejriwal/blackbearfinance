@@ -70,12 +70,12 @@ class ContactClient extends React.Component {
         this.props.onSubmit(ctx);
     }
 
-    handleChange = (event) => {
-        const id = event.target.id;
-        const value = event.target.value;
-        const ctx = {};
-        ctx[id] = value;
-        this.setState(ctx);
+    handleChange(event) {
+        const name = event.target.name;
+        const value = event.target.value || '';
+        this.setState({
+            [name]: value
+        });
     }
 
     initalButton() {
@@ -123,17 +123,17 @@ class ContactClient extends React.Component {
                                     Please select a few services from above.
                                 </ListItem>
                                 <ListItem>
-                                    <TextField id='name' label='name' autoComplete='name' fullWidth={true}
+                                    <TextField name='name' label='name' autoComplete='name' fullWidth={true}
                                         onChange={event => this.handleChange(event)}
                                     />
                                 </ListItem>
                                 <ListItem>
-                                    <TextField id='email' label='email' autoComplete='email' fullWidth={true}
+                                    <TextField name='email' label='email' autoComplete='email' fullWidth={true}
                                         onChange={event => this.handleChange(event)}
                                     />
                                 </ListItem>
                                 <ListItem>
-                                    <TextField id='phone' label='phone' autoComplete='mobile' fullWidth={true}
+                                    <TextField name='phone' label='phone' autoComplete='mobile' fullWidth={true}
                                         onChange={event => this.handleChange(event)}
                                     />
                                 </ListItem>

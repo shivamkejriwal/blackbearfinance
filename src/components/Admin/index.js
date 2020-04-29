@@ -47,16 +47,16 @@ class AdminPage extends React.Component {
         .getWaitingClients()
         .then(waitingClients => {
             Logger().log('AdminPage-waitingClients', {
-                count: waitingClients.length
+                count: waitingClients.length,
+                consoleOnly: true
             });
             this.setState({
                 waitingClients,
                 loaded: true,
-                selected: 0
+                selected: ''
             });
         });
     }
-      
 
     componentDidMount() {
         Logger().log('AdminPage-componentDidMount', {
@@ -65,12 +65,16 @@ class AdminPage extends React.Component {
     }
 
     getWaitingClients() {
-        Logger().log('AdminPage-getWaitingClients');
+        Logger().log('AdminPage-getWaitingClients', {
+            consoleOnly: true
+        });
         return this.state.waitingClients;
     }
+
     handleSelection(client, index) {
-        Logger().log('AdminPage-handleSelection',{
-            index
+        Logger().log('AdminPage-handleSelection', {
+            index,
+            consoleOnly: true
         });
         this.setState({
             selected: index
@@ -81,7 +85,7 @@ class AdminPage extends React.Component {
         const { classes } = this.props;
         return (
             <Grid container spacing={1} className={classes.root} justify='space-between'>
-                <Grid item xs={12} sm={4} md={3} lg={3}
+                <Grid item xs={12} sm={3} md={3} lg={3}
                     className={classes.drawer}>
                     <WaitingList 
                         getWaitingClients={this.getWaitingClients}
@@ -89,7 +93,7 @@ class AdminPage extends React.Component {
                         loaded={this.state.loaded}
                     />
                 </Grid>
-                <Grid item xs={12} sm={6} md={8} lg={8}
+                <Grid item xs={12} sm={8} md={8} lg={8}
                     className={classes.main}>
                     <CientProfile 
                         getWaitingClients={this.getWaitingClients} 

@@ -14,12 +14,13 @@ import Typography from '@material-ui/core/Typography';
 import EmailIcon from '@material-ui/icons/Email';
 import PhoneIcon from '@material-ui/icons/Phone';
 import PersonIcon from '@material-ui/icons/Person';
+import TodayIcon from '@material-ui/icons/Today';
 import SaveIcon from '@material-ui/icons/Save';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Button from '@material-ui/core/Button';
 
 import { Logger } from '../../utils/logger';
+import { Firestore } from '../../utils/firestore';
 
 const boldStyle = {
     // fontWeight: 'bold'
@@ -61,22 +62,138 @@ class CientProfile extends React.Component {
     constructor(props) {
         super(props);
         this.waitingClients = [];
+        this.client = { requestedServices: [] };
+        this.requestedServices = [];
+        // this.textArea = React.createRef();
         this.state = {
-            loaded: this.props.loaded
+            loaded: this.props.loaded,
+            notes: ''
         };
     }
 
     componentDidMount() {
         Logger().log('CientProfile-componentDidMount', {
-            waitingClients: this.waitingClients.length
+            waitingClients: this.waitingClients.length,
+            consoleOnly: true
         });
     }
 
-    render() {
+    shouldComponentUpdate(nextProps, nextState) {
+        const selected = nextProps.selected || 0;
+        this.waitingClients = nextProps.getWaitingClients();
+        this.client = this.waitingClients[selected] || this.client;
+        this.client.id = Firestore().getClientId(this.client);
+        this.requestedServices = getRequestedServices(this.client);
+        Logger().log('CientProfile-shouldComponentUpdate', {
+            loaded: nextProps.loaded,
+            selected: nextProps.selected,
+            consoleOnly: true
+        });
+        return true;
+    }
+
+    componentDidUpdate() {
+        Logger().log('CientProfile-componentDidUpdate', {
+            consoleOnly: true
+        });
+    }
+
+    saveProfile = () => {
+        this.client.notes = this.state.notes;
+        Firestore()
+            .setClients(this.client)
+            .then(_ => {
+                Logger().log('CientProfile-saveProfile', {
+                    consoleOnly: true
+                });
+            });
+    }
+
+    deleteProfile = () => {
+        Firestore()
+            .deleteClients(this.client)
+            .then(_ => {
+                Logger().log('CientProfile-deleteProfile', {
+                    consoleOnly: true
+                });
+            });
+    }
+
+    handleChange(event) {
+        const name = event.target.name;
+        const value = event.target.value;
+        this.setState({
+            [name]: value
+        });
+        Logger().log('CientProfile-handleNotes', {
+            notes: this.client.notes,
+            consoleOnly: true
+        });
+    }
+
+    renderNotes(client) {
         const { classes } = this.props;
-        this.waitingClients = this.props.getWaitingClients();
-        const client = this.waitingClients[this.props.selected] || { requestedServices: [] };
-        const requestedServices = getRequestedServices(client);
+        Logger().log('CientProfile-renderNotes', {
+            notes: client.notes,
+            consoleOnly: true 
+        });
+        return (
+            <div>
+                <Typography className={classes.padding} 
+                    variant='h5' 
+                    color='textPrimary' 
+                    align='center' 
+                    gutterBottom>
+                    Note's:
+                </Typography>
+                <textarea 
+                    rows='10'
+                    className={classes.textarea}
+                    name='notes'
+                    value={client.notes || ''}
+                    onChange={this.handleChange}
+                />
+            </div>   
+        );
+    }
+
+    renderSubmitButtons() {
+        const { classes } = this.props;
+        return(
+            <Grid className={classes.padding} container
+                    spacing={3} 
+                    justify='center' 
+                    alignItems='center'>
+                <Grid item>
+                    <Button
+                        variant='contained'
+                        color='primary'
+                        size='large'
+                        className={classes.button}
+                        startIcon={<SaveIcon />}
+                        onClick={this.saveProfile}
+                    >
+                        Save
+                    </Button>
+                </Grid>
+                <Grid item>
+                    <Button
+                        variant='contained'
+                        color='secondary'
+                        size='large'
+                        className={classes.button}
+                        startIcon={<SaveIcon />}
+                        onClick={this.deleteProfile}
+                    >
+                        Delete
+                    </Button>
+                </Grid>
+            </Grid>
+        );
+    }
+
+    renderSelected = () => {
+        const { classes } = this.props;
         return (
             <div>
                 <List>
@@ -84,35 +201,28 @@ class CientProfile extends React.Component {
                         <ListItemIcon>
                             <PersonIcon />
                         </ListItemIcon>
-                        <ListItemText primary={client.name} />
+                        <ListItemText primary={this.client.name} />
                     </ListItem>
                     <ListItem>
                         <ListItemIcon>
                             <EmailIcon />
                         </ListItemIcon>
-                        <ListItemText primary={client.email} />
+                        <ListItemText primary={this.client.email} />
                     </ListItem>
                     <ListItem>
                         <ListItemIcon>
                             <PhoneIcon />
                         </ListItemIcon>
-                        <ListItemText primary={client.phone} />
-                    </ListItem>
-                    <Divider variant='inset' component='li' />
-                </List>
-                <Typography className={classes.padding} variant='h5' color='textPrimary' align='center' gutterBottom>
-                    Last Request Details
-                </Typography>
-                <List>
-                    <ListItem>
-                        <Typography variant='body1' color='textPrimary' gutterBottom>
-                        <span style={boldStyle}>requestCallBackCount:</span> {client.requestCallBackCount}
-                        </Typography>
+                        <ListItemText primary={this.client.phone} />
                     </ListItem>
                     <ListItem>
-                        <Typography variant='body1' color='textPrimary' gutterBottom>
-                        <span style={boldStyle}>requestCallBackDate:</span> {client.requestCallBackDate}
-                        </Typography>
+                        <ListItemIcon>
+                            <TodayIcon />
+                        </ListItemIcon>
+                        <ListItemText 
+                            primary={this.client.requestCallBackDate}
+                            secondary='request date (year-month-day-hour)'
+                        />
                     </ListItem>
                     <Divider variant='inset' component='li' />
                 </List>
@@ -120,36 +230,36 @@ class CientProfile extends React.Component {
                     Requested Services
                 </Typography>
                 <List>
-                    {requestedServices.map(service => (
+                    {this.requestedServices.map(service => (
                     <ListItem key={service}>
                         <ListItemIcon>
-                        <FiberManualRecordIcon />
+                            <FiberManualRecordIcon />
                         </ListItemIcon>
                         <Typography variant='body1' color='textPrimary' gutterBottom>
-                        <span style={boldStyle}>{service}</span>
+                            <span style={boldStyle}>{service}</span>
                         </Typography>
                     </ListItem>
                     ))}
                 </List>
-                <Typography className={classes.padding} variant='h5' color='textPrimary' align='center' gutterBottom>
-                    Note's:
-                </Typography>
-                <TextareaAutosize 
-                    rowsMin='10'
-                    className={classes.textarea} 
-                    aria-label='empty textarea' 
-                    placeholder='Empty' />
-                <Grid className={classes.padding} container justify='center' alignItems='center'>
-                    <Button
-                        variant='contained'
-                        color='primary'
-                        size='large'
-                        className={classes.button}
-                        startIcon={<SaveIcon />}
-                    >
-                        Save
-                    </Button>
-                </Grid>
+                {this.renderNotes(this.client)}
+                {this.renderSubmitButtons()}
+            </div>
+        );
+    }
+
+    renderNotSelected() {
+        return(<div></div>);
+    }
+
+    render() {
+        const { classes } = this.props;
+        const isSelected = Number.isInteger(this.props.selected);
+
+        return (
+            <div>
+                {isSelected
+                ? this.renderSelected()
+                : this.renderNotSelected()}
             </div>
         );
     }

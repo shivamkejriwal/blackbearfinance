@@ -28,7 +28,9 @@ class ContactDetails extends React.Component {
     render() {
         const { classes } = this.props;
         return (
-            <Grid container item lg={3} md={3} xs={10} className={classes.ContactDetails} justify='center'>
+            <Grid container item lg={3} md={4} xs={10} 
+                className={classes.ContactDetails} 
+                justify='center'>
                 <List>
                 <ListItem>
                     <Typography variant='h6'>Black Bear Finance</Typography>
@@ -38,7 +40,7 @@ class ContactDetails extends React.Component {
                         <PhoneIcon />
                     </ListItemIcon>
                     <Typography variant='body1'>
-                        217-111-2223
+                        408-921-9131
                     </Typography>
                 </ListItem>
                 <ListItem>
@@ -46,7 +48,7 @@ class ContactDetails extends React.Component {
                         <EmailIcon />
                     </ListItemIcon>
                     <Typography variant='body1'>
-                        email@info.com
+                        dhaval@blackbearfinance.com
                     </Typography>
                 </ListItem>
                 </List>
