@@ -57,6 +57,7 @@ class ContactClient extends React.Component {
     }
 
     clickButton() {
+        Logger().log('ContactClient-clickButton');
         this.props.toggleServices();
         this.setState({
             selected: !this.state.selected
