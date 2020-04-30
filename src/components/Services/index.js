@@ -26,6 +26,7 @@ class ServicesPage extends React.Component {
   }
   componentDidMount() {
     Logger().log('ServicesPage-componentDidMount');
+    window.fbq('track', 'ViewContent');
   }
 
   handleChange(serviceMap) {
@@ -59,6 +60,7 @@ class ServicesPage extends React.Component {
     });
     const context = this.formValidation(payload);
     Firestore().setClients(context);
+    window.fbq('track', 'Lead');
   }
   
   render() {

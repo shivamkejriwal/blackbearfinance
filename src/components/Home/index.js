@@ -10,6 +10,7 @@ class HomePage extends React.Component {
 
   componentDidMount() {
     Logger().log('HomePage-componentDidMount');
+    window.fbq('track', 'ViewContent');
   }
 
   render() {
