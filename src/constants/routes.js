@@ -8,3 +8,4 @@ export const ADMIN = '/admin';
 export const PASSWORD_FORGET = '/pw-forget';
 export const CONTACTUS = '/contactus';
 export const SERVICES = '/services';
+export const HEALTHCHECK = '/healthcheck';
