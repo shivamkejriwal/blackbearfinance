@@ -12,6 +12,7 @@ export const Logger = () => {
         }
         else {
             firebase.analytics.logEvent(event, payload);
+            // fbq('trackCustom', event, payload);
             console.log(`console-${event}`, payload);
         }
     };
