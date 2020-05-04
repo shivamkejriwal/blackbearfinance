@@ -29,12 +29,6 @@ const useStyles = (theme) => ({
     },
 });
 
-const deafultValues = {
-    max: 10000000,
-    min: 0,
-    step: 1000
-}
-
 class OptionSelection extends React.Component {
 
     constructor(props) {
@@ -77,7 +71,10 @@ class OptionSelection extends React.Component {
                             onChange={(e) => this.handleChange(e, 'Classification')}
                         >
                             {Naics.map(classification => (
-                                <MenuItem value={classification}>{classification}</MenuItem>
+                                <MenuItem key={classification} 
+                                    value={classification}>
+                                        {classification}
+                                </MenuItem>
                             ))}
                         </Select>
                     </FormControl>
@@ -91,7 +88,10 @@ class OptionSelection extends React.Component {
                             onChange={(e) => this.handleChange(e, 'State')}
                         >
                             {States.map(state => (
-                                <MenuItem value={state.name}>{state.name}</MenuItem>
+                                <MenuItem key={state}
+                                    value={state.name}>
+                                        {state.name}
+                                </MenuItem>
                             ))}
                         </Select>
                     </FormControl>
