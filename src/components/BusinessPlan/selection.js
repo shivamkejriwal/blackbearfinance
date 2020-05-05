@@ -34,7 +34,7 @@ class OptionSelection extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            State: States[0].name,
+            State: States[4].name,
             Classification: Naics[0]
         };
     }

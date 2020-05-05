@@ -1,6 +1,6 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
+// import Grid from '@material-ui/core/Grid';
+// import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -9,14 +9,14 @@ import BusinessIcon from '@material-ui/icons/Business';
 import AssessmentIcon from '@material-ui/icons/Assessment';
 import AutorenewIcon from '@material-ui/icons/Autorenew';
 import { withStyles } from '@material-ui/core/styles';
-import StickyFooter from '../Home/footer';
+// import StickyFooter from '../Home/footer';
 import { Logger } from '../../utils/logger';
 import NumberSlider from '../BusinessPlan/slider';
 import OptionSelection from '../BusinessPlan/selection';
+import Tabulation from '../BusinessPlan/tabulation';
 import { Naics, States } from '../BusinessPlan/constants';
 // import { foo } from './fi';
-import BusinessStructurePage from './businessStructure';
-
+import { getDerivedValues } from '../../constants/NaicsData/index';
 const divStyle = {
     padding: '20px 0',
 };
@@ -63,10 +63,17 @@ const options = {
         max: 500,
         initial: 25,
         icon: (<BusinessIcon />)
+    },
+    itemPrice: {
+        name: 'Price per item',
+        id: 'itemPrice',
+        max: 500,
+        initial: 25,
+        icon: (<BusinessIcon />)
     }
 }
 
-class HealthCheckPage extends React.Component {
+class BusinessStructurePage extends React.Component {
 
     constructor(props) {
         super(props);
@@ -81,12 +88,12 @@ class HealthCheckPage extends React.Component {
     }
 
     componentDidMount() {
-        Logger().log('HealthCheckPage-componentDidMount');
+        Logger().log('BusinessStructurePage-componentDidMount');
         window.fbq('track', 'ViewContent');
     }
 
     updateValue = (id, value) => {
-        Logger().log(`HealthCheckPage-updateValue-${id}`, {
+        Logger().log(`BusinessStructurePage-updateValue-${id}`, {
             value, id,
             consoleOnly: true
         });
@@ -96,17 +103,17 @@ class HealthCheckPage extends React.Component {
     }
 
     submitButton = () => {
-        Logger().log('HealthCheckPage-submitButton', this.state);
+        Logger().log('BusinessStructurePage-submitButton', this.state);
         // foo(this.state);
         // this.props.onSubmit(ctx);
     }
 
     render() {
-    const { classes } = this.props;
+        const { classes } = this.props;
+        
         return (
             <div style={divStyle}>
-                <BusinessStructurePage/>
-            {/* <List>
+            <List>
                 <ListItem className={classes.listItem}>
                     <NumberSlider name={options.revenue.name}
                         updateValue={this.updateValue}
@@ -116,34 +123,21 @@ class HealthCheckPage extends React.Component {
                     />
                 </ListItem>
                 <ListItem className={classes.listItem}>
-                    <NumberSlider name={options.netIncome.name}
+                    <NumberSlider name={options.itemPrice.name}
                         updateValue={this.updateValue}
-                        id={options.netIncome.id}
-                        initial={options.netIncome.initial}
-                        icon={options.netIncome.icon}
-                    />
-                </ListItem>
-                <ListItem className={classes.listItem}>
-                    <NumberSlider name={options.debt.name}
-                        updateValue={this.updateValue}
-                        id={options.debt.id}
-                        initial={options.debt.initial}
-                        icon={options.debt.icon}
-                    />
-                </ListItem>
-                <ListItem className={classes.listItem}>
-                    <NumberSlider name={options.employees.name}
-                        updateValue={this.updateValue}
-                        id={options.employees.id}
-                        initial={options.employees.initial}
-                        icon={options.employees.icon}
-                        max={options.employees.max}
-                        step={1}
+                        id={options.itemPrice.id}
+                        initial={options.itemPrice.initial}
+                        max={options.itemPrice.max}
+                        icon={options.itemPrice.icon}
                     />
                 </ListItem>
                 <ListItem>
                     <OptionSelection updateValue={this.updateValue}/>
                 </ListItem>
+                <Tabulation 
+                    revenue={this.state.revenue}
+                    Classification={this.state.Classification}
+                />
                 <ListItem className={classes.submitBtn}>
                     <Button
                         variant='contained'
@@ -157,11 +151,18 @@ class HealthCheckPage extends React.Component {
                         Submit
                     </Button>  
                 </ListItem>
-            </List> */}
-            
-            <StickyFooter/>
+            </List>
             </div>
         )
     }
 };
-export default withStyles(useStyles)(HealthCheckPage);
+export default withStyles(useStyles)(BusinessStructurePage);
+
+
+/**
+ * output:
+ * amount of money needed to satrt
+ * approximate working capital
+ * button:
+ * Prjections and Esitamtyes call us
+ */

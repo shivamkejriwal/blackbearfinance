@@ -9,7 +9,8 @@ import HomePage from '../Home';
 import ContactUsPage from '../ContactUs';
 import ServicesPage from '../Services';
 import AdminPage from '../Admin';
-import HealthCheckPage from '../HealthCheck'
+import HealthCheckPage from '../HealthCheck';
+import BusinessPlanPage from '../BusinessPlan';
 import * as ROUTES from '../../constants/routes';
 
 const AppRoutes = () => (
@@ -25,6 +26,8 @@ const AppRoutes = () => (
         <Route path={ROUTES.SERVICES} component={ServicesPage} />
         <Route path={ROUTES.ADMIN} component={AdminPage} />
         <Route path={ROUTES.HEALTHCHECK} component={HealthCheckPage} />
+        <Route path={ROUTES.BUSINESSPLAN} component={BusinessPlanPage} />
+        
     </Container>  
 );
 export default AppRoutes;
