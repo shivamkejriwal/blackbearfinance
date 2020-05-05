@@ -52,18 +52,57 @@ export const RequiredLineItems = [
     'Net Profit'
 ];
 
-const getRounded = (value) => Number.parseFloat(value).toFixed(2);
+const getRounded = (value) => Number(Number.parseFloat(value).toFixed(2));
 
 const getValue = (ratio, Revenue)=> {
     let value = Revenue * ratio * .01;
     value = getRounded(value);
-    return value;
+    return Number(value);
 };
 
 export const getDerivedValues = (Classification, Revenue) => {
     const result = [];
     let totalExpense = 0;
     if (Classification && Revenue) {
+        RequiredLineItems.forEach(lineItem => {
+            const ratio = NaicsData[Classification][lineItem];
+            const value = getValue(ratio, Revenue);
+            totalExpense+=ratio;
+            if(lineItem !== 'Net Profit') {
+                result.push({
+                    key: lineItem, 
+                    value,
+                    ratio
+                });
+            }
+        });
+
+        const leftOverExpense = 100 - totalExpense;
+        result.push({
+            key: 'Other Expenses', 
+            value: getValue(leftOverExpense, Revenue),
+            ratio: getRounded(leftOverExpense)
+        });
+    }
+    return result;
+}
+
+export const getDerivedValuesFromIncome = (Classification, Income) => {
+    const result = [];
+    let totalExpense = 0;
+    if (Classification && Income) {
+        const incomeMultipler = Number(1/(NaicsData[Classification]['Net Profit']/100));
+        const Revenue = getRounded(incomeMultipler * Income);
+        console.log('[sk]getDerivedValuesFromIncome', {
+            Income,
+            incomeMultipler,
+            Revenue
+        });
+        result.push({
+            key: 'revenue', 
+            value: Revenue,
+            ratio: 100
+        });
         RequiredLineItems.forEach(lineItem => {
             const ratio = NaicsData[Classification][lineItem];
             const value = getValue(ratio, Revenue);

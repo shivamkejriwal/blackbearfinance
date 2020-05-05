@@ -12,10 +12,11 @@ import AutorenewIcon from '@material-ui/icons/Autorenew';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { withStyles } from '@material-ui/core/styles';
 import StickyFooter from '../Home/footer';
-import { RequiredLineItems, getDerivedValues } from '../../constants/NaicsData/index';
+import { RequiredLineItems, getDerivedValues, getDerivedValuesFromIncome } from '../../constants/NaicsData/index';
 import { Logger } from '../../utils/logger';
 import NumberSlider from './slider';
 import OptionSelection from './selection';
+import DisplayPlan from './displayPlan';
 import Tabulation from './tabulation';
 import { Naics, States } from './constants';
 
@@ -72,6 +73,13 @@ const options = {
         max: 500,
         initial: 25,
         icon: (<ShoppingCartIcon />)
+    },
+    personalIncome: {
+        name: 'How much personal income do you want to make at the end of the year?',
+        id: 'personalIncome',
+        max: 500000,
+        initial: 60000,
+        icon: (<AttachMoneyIcon />)
     }
 }
 
@@ -84,6 +92,7 @@ class BusinessPlanPage extends React.Component {
             netIncome: options.netIncome.initial,
             debt: options.debt.initial,
             employees: options.employees.initial,
+            personalIncome: options.personalIncome.initial,
             State: States[5].name,
             Classification: Naics[0]
         };
@@ -100,12 +109,13 @@ class BusinessPlanPage extends React.Component {
             consoleOnly: true
         });
         const ctx = { [id]: value };
-        if (['revenue', 'Classification'].includes(id)) {
-            const rows = getDerivedValues(this.state.Classification, this.state.revenue);
+        if (['personalIncome', 'Classification'].includes(id)) {
+            const rows = getDerivedValuesFromIncome(this.state.Classification, this.state.personalIncome);
             rows.forEach(row => {
                 ctx[row.key] = Number(row.value)
             });
         }
+        
         this.setState(ctx);
     }
 
@@ -117,24 +127,17 @@ class BusinessPlanPage extends React.Component {
 
     render() {
     const { classes } = this.props;
+        // getDerivedValuesFromIncome(this.state.Classification, options.personalIncome.initial);
         return (
             <div style={divStyle}>
                 <List>
                     <ListItem className={classes.listItem}>
-                        <NumberSlider name={options.revenue.name}
+                        <NumberSlider name={options.personalIncome.name}
                             updateValue={this.updateValue}
-                            id={options.revenue.id}
-                            initial={options.revenue.initial}
-                            icon={options.revenue.icon}
-                        />
-                    </ListItem>
-                    <ListItem className={classes.listItem}>
-                        <NumberSlider name={options.itemPrice.name}
-                            updateValue={this.updateValue}
-                            id={options.itemPrice.id}
-                            initial={options.itemPrice.initial}
-                            max={options.itemPrice.max}
-                            icon={options.itemPrice.icon}
+                            id={options.personalIncome.id}
+                            initial={options.personalIncome.initial}
+                            max={options.personalIncome.max}
+                            icon={options.personalIncome.icon}
                         />
                     </ListItem>
                     <ListItem>
@@ -159,10 +162,16 @@ class BusinessPlanPage extends React.Component {
                         </Button>  
                     </ListItem>
                 </List>
-            
-            <StickyFooter/>
+            <DisplayPlan />
+            <StickyFooter />
             </div>
         )
     }
 };
 export default withStyles(useStyles)(BusinessPlanPage);
+
+/*
+days inventory = 30 days
+at tne end of every month we sold everything
+cycles = 12
+*/
