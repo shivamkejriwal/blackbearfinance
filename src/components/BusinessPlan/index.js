@@ -94,7 +94,8 @@ class BusinessPlanPage extends React.Component {
             employees: options.employees.initial,
             personalIncome: options.personalIncome.initial,
             State: States[5].name,
-            Classification: Naics[0]
+            Classification: Naics[0],
+            showDisplay: false
         };
     }
 
@@ -115,14 +116,18 @@ class BusinessPlanPage extends React.Component {
                 ctx[row.key] = Number(row.value)
             });
         }
-        
         this.setState(ctx);
     }
 
     submitButton = () => {
         Logger().log('BusinessPlanPage-submitButton', this.state);
-        // foo(this.state);
+        this.setState({showDisplay: true});
         // this.props.onSubmit(ctx);
+    }
+
+    resetButton = () => {
+        Logger().log('BusinessPlanPage-resetButton', this.state);
+        this.setState({showDisplay: false});
     }
 
     render() {
@@ -149,20 +154,41 @@ class BusinessPlanPage extends React.Component {
                         updateValue={this.updateValue}
                     />
                     <ListItem className={classes.submitBtn}>
-                        <Button
-                            variant='contained'
-                            color='primary'
-                            size='large'
-                            className={classes.button}
-                            // startIcon={<CallIcon />}
-                            onClick={this.submitButton}
-                            disableElevation
-                        >
-                            Submit
-                        </Button>  
+                        <Grid container spacing={4} justify='center' alignItems='center'>
+                            <Grid item>
+                                <Button
+                                    variant='contained'
+                                    color='primary'
+                                    size='large'
+                                    className={classes.button}
+                                    // startIcon={<CallIcon />}
+                                    onClick={this.submitButton}
+                                    disableElevation
+                                >
+                                    Submit
+                                </Button>
+                            </Grid>
+                            <Grid item>
+                                <Button
+                                    variant='contained'
+                                    color='secondary'
+                                    size='large'
+                                    className={classes.button}
+                                    // startIcon={<CallIcon />}
+                                    onClick={this.resetButton}
+                                    disableElevation
+                                >
+                                    Reset
+                                </Button>
+                            </Grid>
+                        </Grid>
                     </ListItem>
                 </List>
-            <DisplayPlan />
+            {
+                this.state.showDisplay
+                ? <DisplayPlan data={this.state}/>
+                : null
+            }
             <StickyFooter />
             </div>
         )

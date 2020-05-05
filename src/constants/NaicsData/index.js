@@ -93,11 +93,6 @@ export const getDerivedValuesFromIncome = (Classification, Income) => {
     if (Classification && Income) {
         const incomeMultipler = Number(1/(NaicsData[Classification]['Net Profit']/100));
         const Revenue = getRounded(incomeMultipler * Income);
-        console.log('[sk]getDerivedValuesFromIncome', {
-            Income,
-            incomeMultipler,
-            Revenue
-        });
         result.push({
             key: 'revenue', 
             value: Revenue,
